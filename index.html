@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRT Circle // Revenue Recovery Engine™ — Dubai &amp; Qatar Real Estate Lead Response System</title>
+<meta name="description" content="Revenue Recovery Engine™ captures, classifies, routes and alerts brokers on WhatsApp the moment a valuable property inquiry arrives — before it disappears into an inbox. Built for UAE and Qatar brokerages.">
+<meta property="og:title" content="PRT Circle // Revenue Recovery Engine™">
+<meta property="og:description" content="Your brokerage already paid for the inquiry. The question is whether your team converts it before somebody else does.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0b;
+    --bg-panel:#141317;
+    --bg-panel-2:#1a191d;
+    --navy:#11161f;
+    --navy-line:#212a38;
+    --hairline:#2a2824;
+    --hairline-soft:#1e1c19;
+    --gold:#c9a24b;
+    --gold-bright:#e9cd84;
+    --ivory:#f3f1ea;
+    --ink:#f3f1ea;
+    --ink-muted:#a6a39b;
+    --ink-dim:#6e6b63;
+    --whatsapp:#3fbf6f;
+    --radius:2px;
+    --maxw:1180px;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--gold-bright); outline-offset:3px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin:0 0 18px;}
+  .h2{font-family:var(--serif); font-weight:500; font-size:clamp(26px, 3.6vw, 40px); line-height:1.16; margin:0 0 20px; letter-spacing:-0.01em;}
+  .lede{font-size:17px; color:var(--ink-muted); max-width:640px; line-height:1.7; margin:0 0 8px;}
+  .section{padding:96px 0; border-bottom:1px solid var(--hairline-soft);}
+  @media (max-width:720px){.section{padding:64px 0;}}
+  .tag{display:inline-block; font-family:var(--mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim); border:1px solid var(--hairline); padding:5px 10px;}
+
+  .btn{display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase; padding:16px 26px; border-radius:var(--radius); text-decoration:none; cursor:pointer; border:1px solid transparent; transition:background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease; white-space:nowrap;}
+  .btn-gold{background:var(--gold); color:#161310; font-weight:600;}
+  .btn-gold:hover{background:var(--gold-bright); transform:translateY(-1px);}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--hairline);}
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-bright);}
+  .btn-row{display:flex; flex-wrap:wrap; gap:14px; margin-top:36px;}
+
+  header.site{position:sticky; top:0; z-index:50; background:rgba(10,10,11,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--hairline-soft);}
+  .nav{display:flex; align-items:center; justify-content:space-between; height:74px;}
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink);}
+  .brand-mark{width:32px; height:32px; flex-shrink:0; object-fit:contain;}
+  @media (max-width:520px){
+    .brand-mark{width:28px; height:28px;}
+    .brand-word{font-size:13px;}
+  }
+  .brand-word{font-family:var(--serif); font-size:15px; letter-spacing:0.02em;}
+  .brand-word b{color:var(--gold-bright); font-weight:500;}
+  .nav-links{display:none; gap:32px; align-items:center; list-style:none; margin:0; padding:0;}
+  @media (min-width:960px){.nav-links{display:flex;}}
+  .nav-links a{font-size:13.5px; text-decoration:none; color:var(--ink-muted); transition:color 0.15s ease;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{display:none; padding:11px 18px; font-size:11px;}
+  @media (min-width:960px){.nav-cta{display:inline-flex;}}
+  .nav-mobile-cta{display:inline-flex; padding:9px 14px; font-size:10px;}
+  @media (min-width:960px){.nav-mobile-cta{display:none;}}
+
+  /* ---- HERO / ABOVE FOLD ---- */
+  .hero{padding:72px 0 88px; border-bottom:1px solid var(--hairline-soft); position:relative; overflow:hidden;}
+  .hero::before{content:""; position:absolute; top:-30%; right:-10%; width:640px; height:640px; background:radial-gradient(circle, rgba(201,162,75,0.10) 0%, rgba(201,162,75,0) 70%); pointer-events:none;}
+  .hero-inner{position:relative; max-width:760px;}
+  .hero .eyebrow{margin-bottom:22px;}
+  .hero h1{font-family:var(--serif); font-weight:500; font-size:clamp(32px, 5.4vw, 58px); line-height:1.08; letter-spacing:-0.015em; margin:0 0 26px;}
+  .hero h1 .dim{color:var(--ink-dim);}
+  .hero .lede{font-size:18px; max-width:560px; margin-bottom:6px;}
+  .hero .lede.strong{color:var(--ink); font-size:18px;}
+  .hero-time{font-family:var(--mono); font-size:13px; color:var(--gold); margin-bottom:14px; display:block;}
+
+  /* ---- VISUAL HERO / MECHANISM FLOW ---- */
+  .mech{background:var(--bg-panel); border:1px solid var(--hairline); padding:36px 28px; margin-top:52px;}
+  .mech-head{display:flex; justify-content:space-between; align-items:center; padding-bottom:18px; margin-bottom:22px; border-bottom:1px solid var(--hairline); font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim);}
+  .mech-dot{width:7px; height:7px; border-radius:50%; background:var(--gold); display:inline-block; margin-right:8px; animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.35;}}
+  .mech-flow{display:flex; flex-wrap:wrap; align-items:center; gap:0; font-family:var(--mono); font-size:12.5px;}
+  .mech-node{padding:11px 16px; border:1px solid var(--hairline); color:var(--ink-muted); background:var(--bg); white-space:nowrap;}
+  .mech-node.gold{border-color:var(--gold); color:var(--gold-bright);}
+  .mech-arrow{color:var(--hairline); padding:0 8px; font-family:var(--mono);}
+  @media (max-width:720px){
+    .mech-flow{flex-direction:column; align-items:stretch;}
+    .mech-arrow{transform:rotate(90deg); padding:6px 0; align-self:center;}
+    .mech-node{text-align:center;}
+  }
+  @media (prefers-reduced-motion: reduce){.mech-dot{animation:none;}}
+
+  /* ---- LEAK / FUNNEL COMPARISON ---- */
+  .leak-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hairline); border:1px solid var(--hairline); margin-top:48px;}
+  @media (max-width:820px){.leak-grid{grid-template-columns:1fr;}}
+  .leak-col{padding:30px 26px;}
+  .leak-col.before{background:var(--navy);}
+  .leak-col.after{background:var(--bg-panel);}
+  .leak-label{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:20px; display:block;}
+  .leak-col.before .leak-label{color:#7c8aa3;}
+  .leak-col.after .leak-label{color:var(--gold);}
+  .leak-step{padding:12px 0; border-bottom:1px dashed rgba(255,255,255,0.08); font-family:var(--mono); font-size:13.5px; display:flex; align-items:center; gap:12px;}
+  .leak-step:last-child{border-bottom:none; font-weight:600;}
+  .leak-col.before .leak-step{color:#8b93a6;}
+  .leak-col.before .leak-step:last-child{color:#c9a2a2;}
+  .leak-col.after .leak-step{color:var(--ink-muted);}
+  .leak-col.after .leak-step:last-child{color:var(--gold-bright);}
+  .leak-step .arr{color:var(--hairline); font-size:11px;}
+
+  /* ---- PATTERN INTERRUPT ---- */
+  .interrupt{padding:88px 0; text-align:center; border-bottom:1px solid var(--hairline-soft);}
+  .interrupt h2{font-family:var(--serif); font-weight:500; font-size:clamp(26px,4vw,40px); line-height:1.3; max-width:760px; margin:0 auto 28px;}
+  .interrupt p{color:var(--ink-muted); max-width:560px; margin:0 auto; font-size:16px; line-height:1.75;}
+
+  /* ---- BEFORE/AFTER ---- */
+  .ba-wrap{margin-top:48px;}
+  .ba-main{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hairline); border:1px solid var(--hairline);}
+  @media (max-width:820px){.ba-main{grid-template-columns:1fr;}}
+  .ba-col{padding:30px 26px;}
+  .ba-col.before{background:var(--navy);}
+  .ba-col.after{background:var(--bg-panel);}
+  .ba-col p{font-size:15px; padding:9px 0; margin:0; border-bottom:1px solid rgba(255,255,255,0.06); color:var(--ink-muted);}
+  .ba-col p:last-child{border-bottom:none;}
+  .ba-chips{display:grid; grid-template-columns:repeat(auto-fit, minmax(210px,1fr)); gap:1px; background:var(--hairline); border:1px solid var(--hairline); border-top:none; margin-top:0;}
+  .ba-chip{background:var(--bg); padding:20px 22px;}
+  .ba-chip .bt{font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;}
+  .ba-chip .b-line{font-size:13.5px; color:#8b93a6; margin-bottom:4px;}
+  .ba-chip .a-line{font-size:13.5px; color:var(--ink);}
+
+  /* ---- WHATSAPP ---- */
+  .wa-wrap{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center;}
+  @media (max-width:900px){.wa-wrap{grid-template-columns:1fr;}}
+  .phone{background:#000; border:8px solid #1c1c1c; border-radius:34px; width:100%; max-width:310px; margin:0 auto; overflow:hidden; box-shadow:0 40px 80px -20px rgba(0,0,0,0.6);}
+  .phone-top{background:#075E54; padding:16px 16px 12px; display:flex; align-items:center; gap:10px; font-size:12.5px; color:#fff;}
+  .phone-avatar{width:30px; height:30px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; color:#161310; font-family:var(--mono); font-size:10px; font-weight:600;}
+  .phone-body{background:#0b141a; background-image:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size:18px 18px; padding:16px 12px; min-height:400px;}
+  .wa-bubble{background:#005c4b; color:#e9edef; padding:12px 14px; border-radius:10px 10px 10px 2px; font-size:13px; line-height:1.55; max-width:94%; box-shadow:0 1px 2px rgba(0,0,0,0.3);}
+  .wa-bubble .wa-title{color:var(--gold-bright); font-weight:700; display:block; margin-bottom:8px;}
+  .wa-bubble .wa-row{display:block; margin:3px 0;}
+  .wa-bubble .wa-action{display:block; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.12); color:#ffd479; font-weight:600;}
+  .wa-time{font-size:10px; color:rgba(255,255,255,0.4); text-align:right; margin-top:6px;}
+  .wa-illus{font-family:var(--mono); font-size:10px; text-align:center; color:var(--ink-dim); margin-top:10px; letter-spacing:0.06em; text-transform:uppercase;}
+
+  /* ---- MANAGEMENT CONTROL LOG ---- */
+  .mgmt-log{background:var(--bg-panel); border:1px solid var(--hairline); margin-top:44px; font-family:var(--mono); font-size:13px;}
+  .mgmt-head{display:flex; justify-content:space-between; padding:16px 22px; border-bottom:1px solid var(--hairline); color:var(--ink-dim); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;}
+  .mgmt-row{display:flex; justify-content:space-between; padding:13px 22px; border-bottom:1px dashed var(--hairline-soft);}
+  .mgmt-row:last-child{border-bottom:none;}
+  .mgmt-row .k{color:var(--ink-dim);}
+  .mgmt-row .v{color:var(--ink);}
+  .mgmt-row.hi .v{color:var(--gold-bright);}
+
+  /* ---- MARKET INTELLIGENCE (placeholder-ready) ---- */
+  .market-card{border:1px dashed var(--hairline); padding:32px 28px; margin-top:44px; text-align:center;}
+  .market-card p{color:var(--ink-dim); font-size:13.5px; max-width:480px; margin:14px auto 0; font-family:var(--mono); line-height:1.7;}
+
+  /* ---- ROI CALCULATOR ---- */
+  .roi-panel{background:var(--bg-panel); border:1px solid var(--hairline); padding:36px; margin-top:48px;}
+  @media (max-width:600px){.roi-panel{padding:22px 18px;}}
+  .roi-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px;}
+  @media (max-width:820px){.roi-grid{grid-template-columns:1fr;}}
+  .roi-field{margin-bottom:22px;}
+  .roi-field label{display:flex; justify-content:space-between; font-family:var(--mono); font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:10px;}
+  .roi-field label .val{color:var(--gold-bright);}
+  .roi-field input[type=range]{width:100%; accent-color:var(--gold);}
+  .roi-out{border-left:1px solid var(--hairline); padding-left:44px;}
+  @media (max-width:820px){.roi-out{border-left:none; padding-left:0; border-top:1px solid var(--hairline); padding-top:32px;}}
+  .roi-line{display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--hairline-soft);}
+  .roi-line .rl{font-size:13px; color:var(--ink-muted);}
+  .roi-line .rv{font-family:var(--serif); font-size:22px; color:var(--gold-bright);}
+  .roi-note{font-family:var(--mono); font-size:11.5px; color:var(--ink-dim); margin-top:20px; line-height:1.7;}
+
+  /* ---- DEMO VIDEO ---- */
+  .video-frame{background:var(--bg-panel); border:1px solid var(--hairline); border-radius:var(--radius); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
+  .video-frame::before{content:""; position:absolute; inset:0; background:linear-gradient(135deg, rgba(201,162,75,0.06) 0%, transparent 40%), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px);}
+  .video-embed{position:absolute; inset:0; width:100%; height:100%; border:0; z-index:2;}
+  .video-embed.is-empty{display:none;}
+  .video-fallback{position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:0;}
+  .video-fallback.is-hidden{display:none;}
+  .play-btn{width:70px; height:70px; border-radius:50%; border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; color:var(--gold-bright); position:relative; z-index:1; cursor:pointer; background:rgba(201,162,75,0.08); transition:background 0.15s ease;}
+  .play-btn:hover{background:rgba(201,162,75,0.18);}
+  .video-label{position:absolute; bottom:18px; left:22px; font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim); z-index:1;}
+  .video-hook{font-family:var(--serif); font-size:20px; font-style:italic; color:var(--gold-bright); margin:28px 0 6px;}
+  .video-sub{color:var(--ink-muted); font-size:15px;}
+
+  /* ---- EVIDENCE / SCREENSHOTS ---- */
+  .evidence{margin-top:52px; border-top:1px solid var(--hairline);}
+  .ev-item{display:grid; grid-template-columns:1.15fr 0.85fr; gap:44px; align-items:center; margin:0; padding:44px 0; border-bottom:1px solid var(--hairline);}
+  .ev-item:nth-child(even) .ev-shot{order:2;}
+  .ev-item:nth-child(even) .ev-cap{order:1;}
+  @media (max-width:820px){
+    .ev-item{grid-template-columns:1fr; gap:24px; padding:36px 0;}
+    .ev-item:nth-child(even) .ev-shot{order:0;}
+    .ev-item:nth-child(even) .ev-cap{order:0;}
+  }
+  .ev-shot{background:var(--bg-panel); border:1px solid var(--hairline); padding:10px; overflow:hidden;}
+  .ev-shot img{width:100%; height:auto; display:block; border:1px solid var(--hairline-soft);}
+  .ev-cap .ev-n{font-family:var(--mono); font-size:11px; letter-spacing:0.12em; color:var(--gold); display:block; margin-bottom:12px;}
+  .ev-cap h3{font-family:var(--serif); font-weight:500; font-size:21px; margin:0 0 12px;}
+  .ev-cap p{color:var(--ink-muted); font-size:15px; line-height:1.7; margin:0; max-width:420px;}
+
+  .scen-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--hairline); border:1px solid var(--hairline); margin-top:44px;}
+  @media (max-width:900px){.scen-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.scen-grid{grid-template-columns:1fr;}}
+  .scen{background:var(--bg); padding:24px 18px; font-family:var(--mono); font-size:13px; color:var(--ink-muted); text-align:center;}
+  .scen .tag{margin-bottom:0;}
+
+  /* ---- WHO FOR ---- */
+  .qual-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hairline); border:1px solid var(--hairline); margin-top:44px;}
+  @media (max-width:720px){.qual-grid{grid-template-columns:1fr;}}
+  .qual-col{padding:30px 26px;}
+  .qual-col.yes{background:var(--bg-panel);}
+  .qual-col.no{background:var(--navy);}
+  .qual-label{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:20px; display:block;}
+  .qual-col.yes .qual-label{color:var(--gold);}
+  .qual-col.no .qual-label{color:#7c8aa3;}
+  .qual-col ul{list-style:none; margin:0; padding:0;}
+  .qual-col li{padding:11px 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:15px; color:var(--ink-muted);}
+  .qual-col li:last-child{border-bottom:none;}
+  .qual-col.yes li::before{content:"✓ "; color:var(--gold);}
+  .qual-col.no li::before{content:"— "; color:#7c8aa3;}
+
+  /* ---- DEPLOYMENT STEPS ---- */
+  .deploy-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hairline); border:1px solid var(--hairline); margin-top:48px;}
+  @media (max-width:720px){.deploy-grid{grid-template-columns:1fr;}}
+  .deploy-step{background:var(--bg); padding:24px 24px;}
+  .deploy-step .dn{font-family:var(--mono); font-size:11px; color:var(--gold); letter-spacing:0.1em; margin-bottom:8px;}
+  .deploy-step h3{font-family:var(--serif); font-weight:500; font-size:17px; margin:0;}
+
+  /* ---- PRICING ---- */
+  .price-wrap{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hairline); border:1px solid var(--hairline); margin-top:44px; max-width:760px;}
+  @media (max-width:640px){.price-wrap{grid-template-columns:1fr;}}
+  .price-card{background:var(--bg-panel); padding:34px 30px;}
+  .price-card .plabel{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:14px;}
+  .price-card .pval{font-family:var(--serif); font-size:36px; color:var(--gold-bright); margin-bottom:10px;}
+  .price-card .punit{font-family:var(--mono); font-size:13px; color:var(--ink-dim);}
+  .price-desc{max-width:620px; color:var(--ink-muted); margin-top:28px; font-size:15px; line-height:1.75;}
+  .price-desc b{color:var(--ink);}
+
+  /* ---- OBJECTIONS / FAQ (shared accordion) ---- */
+  .faq-list{margin-top:40px; max-width:760px;}
+  .faq-item{border-bottom:1px solid var(--hairline-soft);}
+  .faq-item summary{padding:20px 0; cursor:pointer; font-family:var(--serif); font-size:17px; display:flex; justify-content:space-between; align-items:center; list-style:none; gap:20px;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+"; font-family:var(--mono); color:var(--gold); font-size:20px; flex-shrink:0;}
+  .faq-item[open] summary::after{content:"–";}
+  .faq-item p{color:var(--ink-muted); margin:0 0 22px; max-width:600px; line-height:1.7;}
+
+  /* ---- SECURITY ---- */
+  .sec-list{list-style:none; margin:44px 0 0; padding:0; max-width:640px;}
+  .sec-list li{display:flex; gap:20px; padding:16px 0; border-bottom:1px solid var(--hairline-soft); font-size:15px;}
+  .sec-list .sk{font-family:var(--mono); font-size:11px; color:var(--ink-dim); letter-spacing:0.06em; text-transform:uppercase; flex-shrink:0; width:150px; padding-top:2px;}
+  .sec-list .sv{color:var(--ink-muted);}
+
+  /* ---- FINAL CTA ---- */
+  .final-cta{padding:112px 0; text-align:center; border-bottom:none;}
+  .final-cta h2{font-family:var(--serif); font-weight:500; font-size:clamp(28px, 4.6vw, 44px); line-height:1.28; max-width:820px; margin:0 auto 24px;}
+  .final-cta .facts{font-family:var(--mono); font-size:13px; color:var(--ink-dim); max-width:420px; margin:0 auto 8px; line-height:2.1;}
+  .final-cta .btn-row{justify-content:center;}
+  .final-line{font-family:var(--serif); font-style:italic; font-size:19px; color:var(--gold-bright); margin-top:34px;}
+
+  /* ---- FORM ---- */
+  .poc-panel{background:var(--bg-panel); border:1px solid var(--hairline); padding:40px; margin-top:48px;}
+  @media (max-width:600px){.poc-panel{padding:24px 18px;}}
+  .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px 24px;}
+  @media (max-width:640px){.form-grid{grid-template-columns:1fr;}}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field.full{grid-column:1 / -1;}
+  .field label{font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-dim);}
+  .field input, .field select{background:var(--bg); border:1px solid var(--hairline); color:var(--ink); padding:13px 14px; font-family:var(--sans); font-size:15px; border-radius:var(--radius); width:100%;}
+  .field input:focus, .field select:focus{outline:none; border-color:var(--gold);}
+  .form-submit{margin-top:8px; grid-column:1 / -1; display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+  .form-note{font-size:12.5px; color:var(--ink-dim);}
+  .hp-field{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none;}
+  .form-error{display:none; grid-column:1 / -1; color:#e0a3a3; font-size:13.5px; padding:12px 14px; border:1px solid rgba(224,163,163,0.3); background:rgba(224,163,163,0.06); border-radius:var(--radius);}
+  .form-error.show{display:block;}
+  .btn[disabled]{opacity:0.55; cursor:wait;}
+  .success-state{display:none; text-align:center; padding:36px 20px;}
+  .success-state.show{display:block;}
+  .poc-form.hide{display:none;}
+  .success-state h3{font-family:var(--serif); font-size:24px; font-weight:500; margin:0 0 16px;}
+  .success-state ol{text-align:left; max-width:400px; margin:0 auto; color:var(--ink-muted); font-size:14.5px; line-height:2;}
+  .success-check{width:46px; height:46px; border:1px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; color:var(--gold-bright);}
+
+  footer{padding:52px 0 36px;}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:28px; align-items:flex-start;}
+  .footer-brand{display:flex; align-items:center; gap:12px;}
+  .footer-links{display:flex; gap:26px; flex-wrap:wrap; font-size:13px; color:var(--ink-dim);}
+  .footer-links a{text-decoration:none; color:var(--ink-dim);}
+  .footer-links a:hover{color:var(--gold-bright);}
+  .footer-bottom{margin-top:36px; padding-top:22px; border-top:1px solid var(--hairline-soft); font-size:11.5px; color:var(--ink-dim); font-family:var(--mono); line-height:1.9;}
+
+  .float-wa{position:fixed; bottom:20px; right:20px; z-index:60; width:54px; height:54px; border-radius:50%; background:var(--whatsapp); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,0.4); text-decoration:none; color:#0b0b0c;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1; transform:none; transition:none;}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <img class="brand-mark" src="./logo.png" alt="PRT Circle logo" width="32" height="32" decoding="async">
+      <span class="brand-word">PRT CIRCLE <b>// RRE</b></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#mechanism">Product</a></li>
+      <li><a href="#roi">ROI</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#proof">Proof</a></li>
+      <li><a href="#who">Who It's For</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#poc" class="btn btn-gold nav-cta" data-analytics="cta-nav-poc">Book The Live POC</a>
+    <a href="#poc" class="btn btn-gold nav-mobile-cta" data-analytics="cta-nav-poc-mobile">Book POC</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ABOVE THE FOLD -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">PRT CIRCLE // REVENUE RECOVERY ENGINE™ — UAE &amp; QATAR</p>
+      <h1>The lead arrived.<br><span class="dim">What happened next?</span></h1>
+      <span class="hero-time">11:47 PM — inquiry received</span>
+      <p class="lede">A high-value buyer can enter your brokerage at any hour. The opportunity doesn't wait for your office to open.</p>
+      <p class="lede strong">Revenue Recovery Engine™ captures, classifies, routes, alerts and tracks valuable inbound property inquiries before they disappear into an inbox.</p>
+      <div class="btn-row">
+        <a href="#mechanism" class="btn btn-gold" data-analytics="cta-hero-see">See The Engine Work</a>
+        <a href="#poc" class="btn btn-ghost" data-analytics="cta-hero-poc">Book A Live POC</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUAL HERO / MECHANISM -->
+  <section class="section reveal" id="mechanism">
+    <div class="wrap">
+      <p class="eyebrow">The Mechanism</p>
+      <h2 class="h2">One inquiry. One controlled path to revenue.</h2>
+      <div class="mech">
+        <div class="mech-head"><span><span class="mech-dot"></span>ENGINE STATUS</span><span>OPERATIONAL</span></div>
+        <div class="mech-flow">
+          <span class="mech-node">PORTAL INQUIRY</span><span class="mech-arrow">→</span>
+          <span class="mech-node">ENGINE</span><span class="mech-arrow">→</span>
+          <span class="mech-node gold">LEAD CLASSIFIED</span><span class="mech-arrow">→</span>
+          <span class="mech-node">WHATSAPP ALERT</span><span class="mech-arrow">→</span>
+          <span class="mech-node">BROKER ACTION</span><span class="mech-arrow">→</span>
+          <span class="mech-node">DEAL</span><span class="mech-arrow">→</span>
+          <span class="mech-node gold">COMMISSION</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE INVISIBLE REVENUE LEAK -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">The Invisible Revenue Leak</p>
+      <h2 class="h2">The leak is not your lead generation.<br>It's what happens after the lead arrives.</h2>
+      <p class="lede" style="font-size:16px;">You can spend heavily on portals, listings and advertising. That spend only converts to revenue when somebody responds, qualifies, follows up and moves the opportunity forward. Missed leads rarely fail dramatically — they simply disappear. No call. No viewing. No follow-up. No deal. No commission.</p>
+      <div class="leak-grid">
+        <div class="leak-col before">
+          <span class="leak-label">Without The Engine</span>
+          <div class="leak-step">Lead Arrives</div>
+          <div class="leak-step">Shared Inbox</div>
+          <div class="leak-step">Delay</div>
+          <div class="leak-step">Missed Call</div>
+          <div class="leak-step">No Follow-Up</div>
+          <div class="leak-step">Competitor Responds</div>
+          <div class="leak-step">Lost Commission</div>
+        </div>
+        <div class="leak-col after">
+          <span class="leak-label">With The Engine</span>
+          <div class="leak-step">Lead Arrives</div>
+          <div class="leak-step">Classification</div>
+          <div class="leak-step">WhatsApp Alert</div>
+          <div class="leak-step">Broker Acts</div>
+          <div class="leak-step">Follow-Up Tracked</div>
+          <div class="leak-step">Deal Created</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATTERN INTERRUPT -->
+  <section class="interrupt reveal">
+    <div class="wrap">
+      <h2>Your broker may not know they lost the deal.<br>Management may never know it happened.</h2>
+      <p>A CRM can show you the leads that were entered into it. It cannot tell you how many valuable inquiries died before anyone acted. The Engine is the recovery layer — the part of the workflow a CRM was never built to cover.</p>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Operational Transformation</p>
+      <h2 class="h2">Before and after, inquiry by inquiry.</h2>
+      <div class="ba-wrap">
+        <div class="ba-main">
+          <div class="ba-col before">
+            <span class="leak-label">Before</span>
+            <p>A buyer submits an inquiry through a property portal.</p>
+            <p>The email lands in a shared inbox.</p>
+            <p>The broker sees it later.</p>
+            <p>The buyer has already contacted several agencies.</p>
+          </div>
+          <div class="ba-col after">
+            <span class="leak-label">After</span>
+            <p>The inquiry is captured automatically.</p>
+            <p>Buyer and property are identified and matched.</p>
+            <p>A WhatsApp alert reaches the responsible broker.</p>
+            <p>Management can see that a response happened — and when.</p>
+          </div>
+        </div>
+        <div class="ba-chips">
+          <div class="ba-chip">
+            <p class="bt">Duplicate Leads</p>
+            <p class="b-line">Same buyer, logged twice, worked twice.</p>
+            <p class="a-line">Matched once. No duplicate broker effort.</p>
+          </div>
+          <div class="ba-chip">
+            <p class="bt">High-Value Buyers</p>
+            <p class="b-line">Treated the same as every other inquiry.</p>
+            <p class="a-line">Flagged and prioritized on arrival.</p>
+          </div>
+          <div class="ba-chip">
+            <p class="bt">Property Matching</p>
+            <p class="b-line">Broker manually cross-checks the listing.</p>
+            <p class="a-line">Property identified and attached automatically.</p>
+          </div>
+          <div class="ba-chip">
+            <p class="bt">Broker Assignment</p>
+            <p class="b-line">Whoever opens the inbox first, or nobody.</p>
+            <p class="a-line">Routed to the broker responsible for it.</p>
+          </div>
+          <div class="ba-chip">
+            <p class="bt">Response-Time Tracking</p>
+            <p class="b-line">Nobody actually knows how long it took.</p>
+            <p class="a-line">Time from arrival to contact is recorded.</p>
+          </div>
+          <div class="ba-chip">
+            <p class="bt">Deal Creation</p>
+            <p class="b-line">Manually entered later, if at all.</p>
+            <p class="a-line">Created the moment the lead qualifies.</p>
+          </div>
+          <div class="ba-chip">
+            <p class="bt">Commission Visibility</p>
+            <p class="b-line">Invisible until a deal closes.</p>
+            <p class="a-line">Visible across the pipeline from day one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP -->
+  <section class="section reveal">
+    <div class="wrap wa-wrap">
+      <div>
+        <p class="eyebrow">The Alert Layer</p>
+        <h2 class="h2">Your brokers already live in WhatsApp.<br>The Engine meets them there.</h2>
+        <p class="lede">No new workflow to learn just to react to an inquiry. The alert arrives through the channel your brokerage already uses, all day, every day.</p>
+        <p class="lede" style="color:var(--ink);">The message is only useful if it leads to action.</p>
+        <div class="btn-row">
+          <a href="#demo" class="btn btn-ghost" data-analytics="cta-wa-workflow">Book The Live POC</a>
+        </div>
+      </div>
+      <div>
+        <div class="phone">
+          <div class="phone-top"><span class="phone-avatar">RB</span><span>Revenue Recovery Engine</span></div>
+          <div class="phone-body">
+            <div class="wa-bubble">
+              <span class="wa-title">🚨 NEW HIGH-VALUE LEAD</span>
+              <span class="wa-row">👤 Name: David Sterling</span>
+              <span class="wa-row">🏡 Property: Waterfront Villa</span>
+              <span class="wa-row">💰 Price: AED 32M</span>
+              <span class="wa-row">📞 Phone: +971 XX XXX XXXX</span>
+              <span class="wa-row">💬 Message: Cash buyer. Ready to move quickly. Wants a private viewing.</span>
+              <span class="wa-action">⚡ ACTION NOW: Contact the buyer and confirm viewing availability.</span>
+            </div>
+            <div class="wa-time">09:41</div>
+          </div>
+        </div>
+        <p class="wa-illus">Illustrative alert — not a real transaction</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANAGEMENT CONTROL -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Management Control</p>
+      <h2 class="h2">You shouldn't have to ask your team what happened to a lead.</h2>
+      <p class="lede" style="font-size:16px;">Actual figures depend entirely on your brokerage's own data. Here's the shape of what becomes visible.</p>
+      <div class="mgmt-log">
+        <div class="mgmt-head"><span>EXAMPLE WORKFLOW</span><span>NOT REAL DATA</span></div>
+        <div class="mgmt-row"><span class="k">Lead received</span><span class="v">10:42</span></div>
+        <div class="mgmt-row"><span class="k">Broker assigned</span><span class="v">10:43</span></div>
+        <div class="mgmt-row"><span class="k">First contact</span><span class="v">10:46</span></div>
+        <div class="mgmt-row"><span class="k">Response time</span><span class="v">4 minutes</span></div>
+        <div class="mgmt-row"><span class="k">Stage</span><span class="v">Viewing Scheduled</span></div>
+        <div class="mgmt-row hi"><span class="k">Potential commission</span><span class="v">AED X</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET INTELLIGENCE -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Market Context</p>
+      <h2 class="h2">Real market intelligence, when a verified source exists.</h2>
+      <p class="lede" style="font-size:16px;">Transaction volume, average values, and area activity are useful context — only when sourced and dated. This panel is built to display it; it is intentionally empty until a verified feed is connected.</p>
+      <div class="market-card">
+        <span class="tag">Ready for live data</span>
+        <p>No fabricated figures are shown here. Once a verified market data source is connected — Dubai Land Department, a portal analytics feed, or an equivalent — this panel displays the figure, its source, and the date it was last updated.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section class="section reveal" id="roi">
+    <div class="wrap">
+      <p class="eyebrow">Model The Economics</p>
+      <h2 class="h2">One recovered deal changes the math.</h2>
+      <p class="lede" style="font-size:16px;">This is not a promise that one transaction covers the cost. Model it using your own numbers and see where it lands.</p>
+      <div class="roi-panel">
+        <div class="roi-grid">
+          <div>
+            <div class="roi-field">
+              <label>Monthly Inbound Inquiries <span class="val" id="v-inquiries">40</span></label>
+              <input type="range" id="r-inquiries" min="5" max="300" value="40" step="5">
+            </div>
+            <div class="roi-field">
+              <label>Average Property Value (AED) <span class="val" id="v-value">5,000,000</span></label>
+              <input type="range" id="r-value" min="1000000" max="50000000" value="5000000" step="500000">
+            </div>
+            <div class="roi-field">
+              <label>Average Commission % <span class="val" id="v-comm">3.0%</span></label>
+              <input type="range" id="r-comm" min="0.5" max="6" value="3" step="0.5">
+            </div>
+            <div class="roi-field">
+              <label>Estimated Conversion Rate <span class="val" id="v-conv">2%</span></label>
+              <input type="range" id="r-conv" min="0.5" max="15" value="2" step="0.5">
+            </div>
+          </div>
+          <div class="roi-out">
+            <div class="roi-line"><span class="rl">Commission per single deal</span><span class="rv" id="o-single">—</span></div>
+            <div class="roi-line"><span class="rl">Estimated deals per month at your rate</span><span class="rv" id="o-deals">—</span></div>
+            <div class="roi-line"><span class="rl">Monthly commission at stake</span><span class="rv" id="o-monthly">—</span></div>
+            <div class="roi-line"><span class="rl">Implementation cost</span><span class="rv" style="color:var(--ink-muted); font-size:16px;">$9,500</span></div>
+            <p class="roi-note">Illustrative model based on the numbers you enter — not a forecast, guarantee, or historical result. Compare the commission on one deal against the implementation cost directly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE POC PERSUASION -->
+  <section class="section reveal" id="demo">
+    <div class="wrap">
+      <p class="eyebrow">Proof, Not Slides</p>
+      <h2 class="h2">Don't take our word for it.<br>Watch your own lead move through the Engine.</h2>
+      <p class="lede" style="font-size:16px;">During the POC, we run the actual workflow — not a hypothetical deck.</p>
+      <ol class="steps-list" style="list-style:none; margin:32px 0 0; padding:0; font-family:var(--mono); font-size:13px; color:var(--ink-muted);">
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Portal / email inquiry</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Parser</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Lead extraction</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Property matching</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Lead scoring</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Duplicate detection</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Broker routing</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">WhatsApp alert</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Notion record</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Deal workflow</li>
+        <li style="padding:9px 0;">Commission visibility</li>
+      </ol>
+      <div class="btn-row">
+        <a href="#poc" class="btn btn-gold" data-analytics="cta-demo-poc">Book The Live POC</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO VIDEO -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Preview</p>
+      <p class="video-hook">A AED 20M buyer just inquired.</p>
+      <p class="video-sub">How fast does your brokerage know?</p>
+      <div class="video-frame" style="margin-top:28px;">
+        <!-- ============================================================
+             LOOM DEMO EMBED
+             Paste your Loom SHARE URL into the src below, converting
+             /share/ to /embed/ — e.g.
+             https://www.loom.com/share/abc123  →  https://www.loom.com/embed/abc123
+             ============================================================ -->
+        <iframe
+          class="video-embed"
+          src=""
+          data-loom-placeholder="true"
+          title="PRT Circle Revenue Recovery Engine — live demo"
+          frameborder="0"
+          allowfullscreen
+          loading="lazy"></iframe>
+        <div class="video-fallback" id="videoFallback">
+          <div class="play-btn" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7-11-7z" fill="currentColor"/></svg>
+          </div>
+          <span class="video-label">INQUIRY → ENGINE → WHATSAPP → BROKER → DEAL → DASHBOARD</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a href="#poc" class="btn btn-gold" data-analytics="cta-after-demo">Book The Live POC</a>
+        <a href="#proof" class="btn btn-ghost" data-analytics="cta-after-demo-proof">See The System Itself</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / SYSTEM EVIDENCE -->
+  <section class="section reveal" id="proof">
+    <div class="wrap">
+      <p class="eyebrow">Inside The Engine</p>
+      <h2 class="h2">This is the system. Not a mockup of one.</h2>
+      <p class="lede" style="font-size:16px;">A live alert from the working Revenue Recovery Engine. Data shown is from the internal test environment — not a client brokerage.</p>
+      <div class="evidence">
+        <figure class="ev-item">
+          <div class="ev-shot">
+            <img src="./screenshots/whatsapp-alert.png" alt="WhatsApp alert delivered to a broker's phone containing the lead name, property, price and the action required" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="ev-cap">
+            <span class="ev-n">EV.01</span>
+            <h3>The Broker Alert</h3>
+            <p>This is the alert exactly as a broker receives it. Everything needed to act — who the buyer is, which property, what they asked for — arrives in the one app your team already has open all day. No inbox to check. No dashboard to log into.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="btn-row">
+        <a href="#poc" class="btn btn-gold" data-analytics="cta-proof-poc">Book The Live POC</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / SCENARIOS -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Built For Speed</p>
+      <h2 class="h2">Built for brokerages where speed has a price.</h2>
+      <p class="lede" style="font-size:15px; color:var(--ink-dim);">Hypothetical operational scenarios — not client results.</p>
+      <div class="scen-grid">
+        <div class="scen"><span class="tag">Illustrative</span><br><br>Luxury brokerage</div>
+        <div class="scen"><span class="tag">Illustrative</span><br><br>20-agent team</div>
+        <div class="scen"><span class="tag">Illustrative</span><br><br>100-agent brokerage</div>
+        <div class="scen"><span class="tag">Illustrative</span><br><br>Multi-portal brokerage</div>
+        <div class="scen"><span class="tag">Illustrative</span><br><br>High-volume inbound team</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO FOR -->
+  <section class="section reveal" id="who">
+    <div class="wrap">
+      <p class="eyebrow">Qualification</p>
+      <h2 class="h2">This is not for every brokerage.</h2>
+      <div class="qual-grid">
+        <div class="qual-col yes">
+          <span class="qual-label">Ideal</span>
+          <ul>
+            <li>You receive meaningful inbound volume.</li>
+            <li>You pay for property portals.</li>
+            <li>You have multiple brokers.</li>
+            <li>You care about response time.</li>
+            <li>You need management visibility.</li>
+            <li>You believe missed inquiries have financial consequences.</li>
+          </ul>
+        </div>
+        <div class="qual-col no">
+          <span class="qual-label">Not Ideal</span>
+          <ul>
+            <li>Minimal inbound volume.</li>
+            <li>Very small teams.</li>
+            <li>No meaningful portal activity.</li>
+            <li>No willingness to measure broker response.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPLOYMENT -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Deployment</p>
+      <h2 class="h2">This is deployed. It is not downloaded.</h2>
+      <div class="deploy-grid">
+        <div class="deploy-step"><p class="dn">STEP 01</p><h3>Commercial approval</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 02</p><h3>Onboarding brief</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 03</p><h3>Portal &amp; inbox configuration</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 04</p><h3>WhatsApp configuration</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 05</p><h3>Broker &amp; database configuration</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 06</p><h3>Testing</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 07</p><h3>Live POC</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 08</p><h3>Handover</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Pricing</p>
+      <h2 class="h2">Priced for what one recovered deal is worth.</h2>
+      <div class="price-wrap">
+        <div class="price-card"><p class="plabel">Implementation</p><p class="pval">$9,500</p><p class="punit">one-time</p></div>
+        <div class="price-card"><p class="plabel">Ongoing Retainer</p><p class="pval">$799</p><p class="punit">per month</p></div>
+      </div>
+      <p class="price-desc">This is built for brokerages where <b>one recovered transaction can materially change the economics.</b> Deployment capacity is limited because each brokerage requires real configuration, testing, and handover — not a self-serve signup.</p>
+    </div>
+  </section>
+
+  <!-- OBJECTIONS -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Direct Answers</p>
+      <h2 class="h2">The questions you're already asking.</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>We already have a CRM.</summary>
+          <p>Good. The Engine isn't positioned as a CRM replacement. It's designed to improve what happens before and around the CRM workflow.</p>
+        </details>
+        <details class="faq-item">
+          <summary>We already use automation.</summary>
+          <p>Then the question isn't whether automation exists. It's whether valuable inquiries reliably become broker action.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Our brokers already use WhatsApp.</summary>
+          <p>Exactly. That's why WhatsApp is part of the operating workflow, not a separate tool to adopt.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can you prove it?</summary>
+          <p>Yes. Use your own inquiry. Watch the POC.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if the system fails?</summary>
+          <p>Failures are detected, logged, retried, and escalated. We don't promise zero failures — we explain exactly how one is caught and recovered.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="section reveal">
+    <div class="wrap">
+      <p class="eyebrow">Security &amp; Data</p>
+      <h2 class="h2">Kept simple, kept honest.</h2>
+      <ul class="sec-list">
+        <li><span class="sk">Data ownership</span><span class="sv">Your brokerage owns its data. It lives inside your own Notion workspace, not a shared multi-tenant database.</span></li>
+        <li><span class="sk">Processing</span><span class="sv">Workflow automation runs through your own connected Make.com account.</span></li>
+        <li><span class="sk">Connected systems</span><span class="sv">Notion, Make, WhatsApp Business Cloud API, Apollo, and your property portals.</span></li>
+        <li><span class="sk">Access</span><span class="sv">Limited to your team and the deployment engineer during setup and support.</span></li>
+        <li><span class="sk">Certifications</span><span class="sv">None claimed beyond what the underlying platforms (Notion, Make, Meta) themselves hold.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- POC FORM -->
+  <section class="section reveal" id="poc">
+    <div class="wrap">
+      <p class="eyebrow">Apply For Deployment</p>
+      <h2 class="h2">Bring one real inquiry. Watch what happens.</h2>
+      <div class="poc-panel">
+        <form class="poc-form" id="pocForm">
+          <div class="form-grid">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" required autocomplete="organization"></div>
+            <div class="field"><label for="f-role">Role</label><input id="f-role" name="role" type="text" required></div>
+            <div class="field"><label for="f-whatsapp">WhatsApp</label><input id="f-whatsapp" name="whatsapp" type="tel" placeholder="+971" required></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+            <div class="field"><label for="f-brokers">Number Of Brokers</label><input id="f-brokers" name="brokers" type="text" placeholder="e.g. 12"></div>
+            <div class="field"><label for="f-sources">Main Lead Sources</label><input id="f-sources" name="sources" type="text" placeholder="Property Finder, Bayut..."></div>
+            <div class="field"><label for="f-volume">Approx. Monthly Inbound Volume</label><input id="f-volume" name="volume" type="text" placeholder="e.g. 40–60"></div>
+            <div class="hp-field" aria-hidden="true">
+              <label for="hp-company-url">Company URL</label>
+              <input id="hp-company-url" name="hp_company_url" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-error" id="formError" role="alert">Something went wrong sending your request. Please try again, or email us directly.</div>
+            <div class="form-submit">
+              <button type="submit" class="btn btn-gold" id="submitBtn" data-analytics="cta-form-submit">Book The Live POC</button>
+              <span class="form-note">We review every request before scheduling.</span>
+            </div>
+          </div>
+        </form>
+        <div class="success-state" id="successState">
+          <div class="success-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Your POC request is received.</h3>
+          <ol>
+            <li>We review your brokerage profile.</li>
+            <li>We confirm whether the Engine fits your operation.</li>
+            <li>We arrange the POC.</li>
+            <li>You see the workflow using your own scenario.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section reveal" id="faq">
+    <div class="wrap">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="h2">A few things worth clarifying.</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Does it work with Property Finder, Bayut and Dubizzle?</summary>
+          <p>The system is configured around the inquiry format available from your portal and inbox workflow, including all three.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if an inquiry format changes?</summary>
+          <p>Parsing and extraction rules are tested and maintained against your actual inbound formats.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it automatically contact buyers?</summary>
+          <p>No. The system alerts the responsible broker. Human contact stays entirely under your brokerage's control.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CLOSE -->
+  <section class="final-cta reveal">
+    <div class="wrap">
+      <p class="eyebrow" style="text-align:center;">Before You Go</p>
+      <h2>The question isn't whether you receive enough leads.<br>It's how many of them your brokerage actually recovers.</h2>
+      <p class="facts">You already spend money generating demand.<br>You already have brokers.<br>You already have properties.<br>You already have WhatsApp.</p>
+      <div class="btn-row">
+        <a href="#poc" class="btn btn-gold" data-analytics="cta-final-poc">Book The Live POC</a>
+        <a href="#poc" class="btn btn-ghost" data-analytics="cta-final-apply">Apply For Deployment</a>
+      </div>
+      <p class="final-line">Bring one real inquiry. Watch what happens.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="./logo.png" alt="PRT Circle logo" width="28" height="28" loading="lazy" decoding="async" style="width:28px; height:28px; object-fit:contain;">
+        <span class="brand-word">PRT CIRCLE <b>// Revenue Recovery Engine™</b></span>
+      </div>
+      <nav class="footer-links">
+        <a href="#mechanism">Product</a>
+        <a href="#roi">ROI</a>
+        <a href="#demo">Demo</a>
+        <a href="#proof">Proof</a>
+        <a href="#who">Who It's For</a>
+        <a href="#faq">FAQ</a>
+        <a href="#poc">Apply For Deployment</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      © PRT CIRCLE — REVENUE RECOVERY ENGINE™. BUILT FOR UAE &amp; QATAR REAL ESTATE BROKERAGES.<br>
+      ALL EXAMPLE FIGURES, ALERTS AND WORKFLOWS SHOWN ARE ILLUSTRATIVE UNLESS LABELLED "LIVE."
+    </div>
+  </div>
+</footer>
+
+<a href="#poc" class="float-wa" aria-label="Book a private POC" data-analytics="cta-float-whatsapp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.25-.45.07-1.02.1-1.65-.1-.38-.12-.87-.28-1.5-.56-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73s.68-1.93.93-2.2c.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.13.29-.26.44-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.26.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.16 1.34.26.13.42.11.57-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.6-.13.24.09 1.54.73 1.8.86.27.13.44.2.51.31.06.11.06.62-.16 1.24z" fill="#0b0b0c"/></svg>
+</a>
+
+<script>
+  // scroll reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // POC form → Make webhook → Notion
+  var POC_WEBHOOK_URL = 'https://hook.eu2.make.com/kv0ljq0tw24prbc7j43o9dw9qound98f';
+  var pocForm = document.getElementById('pocForm');
+  var successState = document.getElementById('successState');
+  var formError = document.getElementById('formError');
+  var submitBtn = document.getElementById('submitBtn');
+
+  if(pocForm){
+    pocForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      formError.classList.remove('show');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      var data = {};
+      new FormData(pocForm).forEach(function(value, key){ data[key] = value; });
+
+      fetch(POC_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      })
+      .then(function(res){
+        if(!res.ok) throw new Error('Request failed: ' + res.status);
+        pocForm.classList.add('hide');
+        successState.classList.add('show');
+        successState.setAttribute('tabindex','-1');
+        successState.focus();
+      })
+      .catch(function(err){
+        console.error('POC form submission failed:', err);
+        formError.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Book The Live POC';
+      });
+    });
+  }
+
+  // Loom embed: show fallback frame until a real URL is pasted into the iframe src
+  (function(){
+    var embed = document.querySelector('.video-embed');
+    var fallback = document.getElementById('videoFallback');
+    if(!embed || !fallback) return;
+    var src = embed.getAttribute('src');
+    if(src && src.trim() !== ''){
+      embed.classList.remove('is-empty');
+      fallback.classList.add('is-hidden');
+    } else {
+      embed.classList.add('is-empty');
+      fallback.classList.remove('is-hidden');
+    }
+  })();
+
+  // ROI calculator
+  (function(){
+    var rInquiries = document.getElementById('r-inquiries');
+    var rValue = document.getElementById('r-value');
+    var rComm = document.getElementById('r-comm');
+    var rConv = document.getElementById('r-conv');
+    if(!rInquiries) return;
+
+    function fmtAED(n){
+      return 'AED ' + Math.round(n).toLocaleString('en-US');
+    }
+    function calc(){
+      var inquiries = parseFloat(rInquiries.value);
+      var value = parseFloat(rValue.value);
+      var comm = parseFloat(rComm.value);
+      var conv = parseFloat(rConv.value);
+
+      document.getElementById('v-inquiries').textContent = inquiries;
+      document.getElementById('v-value').textContent = Math.round(value).toLocaleString('en-US');
+      document.getElementById('v-comm').textContent = comm.toFixed(1) + '%';
+      document.getElementById('v-conv').textContent = conv.toFixed(1) + '%';
+
+      var commissionPerDeal = value * (comm/100);
+      var dealsPerMonth = inquiries * (conv/100);
+      var monthlyCommission = commissionPerDeal * dealsPerMonth;
+
+      document.getElementById('o-single').textContent = fmtAED(commissionPerDeal);
+      document.getElementById('o-deals').textContent = dealsPerMonth.toFixed(1);
+      document.getElementById('o-monthly').textContent = fmtAED(monthlyCommission);
+    }
+    [rInquiries, rValue, rComm, rConv].forEach(function(el){
+      el.addEventListener('input', calc);
+    });
+    calc();
+  })();
+</script>
+
+</body>
+</html>
