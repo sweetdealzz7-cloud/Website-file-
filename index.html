@@ -63,11 +63,13 @@
   header.site{position:sticky; top:0; z-index:50; background:rgba(10,10,11,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--hairline-soft);}
   .nav{display:flex; align-items:center; justify-content:space-between; height:74px;}
   .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink);}
-  .brand-mark{width:32px; height:32px; flex-shrink:0; object-fit:contain;}
+  .brand-mark{height:30px; width:auto; flex-shrink:0; object-fit:contain; display:block;
+    background:var(--ivory); padding:5px 9px; border-radius:3px;}
   @media (max-width:520px){
-    .brand-mark{width:28px; height:28px;}
-    .brand-word{font-size:13px;}
+    .brand-mark{height:24px; padding:4px 7px;}
   }
+  .brand-word{display:none;}
+  .footer-brand .brand-mark{height:26px;}
   .brand-word{font-family:var(--serif); font-size:15px; letter-spacing:0.02em;}
   .brand-word b{color:var(--gold-bright); font-weight:500;}
   .nav-links{display:none; gap:32px; align-items:center; list-style:none; margin:0; padding:0;}
@@ -90,6 +92,8 @@
   .hero .lede.strong{color:var(--ink); font-size:18px;}
   .hero-time{font-family:var(--mono); font-size:13px; color:var(--gold); margin-bottom:14px; display:block;}
 
+  .hero-gate{font-family:var(--mono); font-size:12px; letter-spacing:0.04em; color:var(--ink-dim); margin-top:22px;}
+  .hero-gate::before{content:"— "; color:var(--gold);}
   /* ---- VISUAL HERO / MECHANISM FLOW ---- */
   .mech{background:var(--bg-panel); border:1px solid var(--hairline); padding:36px 28px; margin-top:52px;}
   .mech-head{display:flex; justify-content:space-between; align-items:center; padding-bottom:18px; margin-bottom:22px; border-bottom:1px solid var(--hairline); font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim);}
@@ -253,6 +257,16 @@
   .price-desc{max-width:620px; color:var(--ink-muted); margin-top:28px; font-size:15px; line-height:1.75;}
   .price-desc b{color:var(--ink);}
 
+  /* ---- CAPACITY / OPERATOR ---- */
+  .capacity{display:flex; align-items:flex-start; gap:14px; margin-top:28px; padding:20px 22px; border:1px solid var(--gold); background:rgba(201,162,75,0.05); max-width:720px;}
+  .cap-dot{width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:8px; animation:pulse 2.4s ease-in-out infinite;}
+  .cap-text{font-size:14.5px; color:var(--ink-muted); line-height:1.7;}
+  .cap-text b{color:var(--gold-bright);}
+  .op-list{list-style:none; margin:28px 0 0; padding:0;}
+  .op-list li{padding:14px 0; border-bottom:1px solid var(--hairline-soft); font-size:15px; color:var(--ink-muted);}
+  .op-list li:last-child{border-bottom:none;}
+  .op-list .ok{display:block; font-family:var(--mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold); margin-bottom:5px;}
+
   /* ---- OBJECTIONS / FAQ (shared accordion) ---- */
   .faq-list{margin-top:40px; max-width:760px;}
   .faq-item{border-bottom:1px solid var(--hairline-soft);}
@@ -298,6 +312,15 @@
   .success-state ol{text-align:left; max-width:400px; margin:0 auto; color:var(--ink-muted); font-size:14.5px; line-height:2;}
   .success-check{width:46px; height:46px; border:1px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; color:var(--gold-bright);}
 
+  .contact-alt{font-size:14px; color:var(--ink-dim); margin:22px 0 0; text-align:center;}
+  .contact-alt a{color:var(--gold-bright); text-decoration:none; border-bottom:1px solid rgba(233,205,132,0.35);}
+  .contact-alt a:hover{color:var(--ivory);}
+  .footer-contact{display:flex; flex-direction:column; gap:6px; font-size:13px;}
+  .footer-contact .fc-label{font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;}
+  .footer-contact a{color:var(--ink-muted); text-decoration:none;}
+  .footer-contact a:hover{color:var(--gold-bright);}
+  .op-loc{font-family:var(--mono); font-size:11.5px; letter-spacing:0.04em; color:var(--ink-dim); margin-top:14px;}
+  .footer-contact .fc-loc{color:var(--ink-dim); font-size:12px; margin-top:6px;}
   footer{padding:52px 0 36px;}
   .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:28px; align-items:flex-start;}
   .footer-brand{display:flex; align-items:center; gap:12px;}
@@ -318,7 +341,7 @@
 <header class="site">
   <div class="wrap nav">
     <a href="#top" class="brand">
-      <img class="brand-mark" src="./logo.png" alt="PRT Circle logo" width="32" height="32" decoding="async">
+      <img class="brand-mark" src="./logo.png" alt="PRT Circle" decoding="async">
       <span class="brand-word">PRT CIRCLE <b>// RRE</b></span>
     </a>
     <ul class="nav-links">
@@ -327,6 +350,7 @@
       <li><a href="#demo">Demo</a></li>
       <li><a href="#proof">Proof</a></li>
       <li><a href="#who">Who It's For</a></li>
+      <li><a href="#operator">Operator</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="#poc" class="btn btn-gold nav-cta" data-analytics="cta-nav-poc">Book The Live POC</a>
@@ -346,8 +370,9 @@
       <p class="lede strong">Revenue Recovery Engine™ captures, classifies, routes, alerts and tracks valuable inbound property inquiries before they disappear into an inbox.</p>
       <div class="btn-row">
         <a href="#mechanism" class="btn btn-gold" data-analytics="cta-hero-see">See The Engine Work</a>
-        <a href="#poc" class="btn btn-ghost" data-analytics="cta-hero-poc">Book A Live POC</a>
+        <a href="#poc" class="btn btn-ghost" data-analytics="cta-hero-poc">Apply For A Live POC</a>
       </div>
+      <p class="hero-gate">By application. Deployment slots are limited and reviewed for fit.</p>
     </div>
   </section>
 
@@ -376,7 +401,7 @@
     <div class="wrap">
       <p class="eyebrow">The Invisible Revenue Leak</p>
       <h2 class="h2">The leak is not your lead generation.<br>It's what happens after the lead arrives.</h2>
-      <p class="lede" style="font-size:16px;">You can spend heavily on portals, listings and advertising. That spend only converts to revenue when somebody responds, qualifies, follows up and moves the opportunity forward. Missed leads rarely fail dramatically — they simply disappear. No call. No viewing. No follow-up. No deal. No commission.</p>
+      <p class="lede" style="font-size:16px;">You already paid for the inquiry. It only becomes revenue if somebody acts on it. Missed leads don't fail loudly — they just vanish. No call. No viewing. No deal. No commission.</p>
       <div class="leak-grid">
         <div class="leak-col before">
           <span class="leak-label">Without The Engine</span>
@@ -397,6 +422,63 @@
           <div class="leak-step">Follow-Up Tracked</div>
           <div class="leak-step">Deal Created</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / SYSTEM EVIDENCE -->
+  <section class="section reveal" id="proof">
+    <div class="wrap">
+      <p class="eyebrow">Inside The Engine</p>
+      <h2 class="h2">This is the system. Not a mockup of one.</h2>
+      <p class="lede" style="font-size:16px;">Four views from the working engine. Test-environment data, not a client brokerage.</p>
+      <div class="evidence">
+        <figure class="ev-item">
+          <div class="ev-shot">
+            <img src="./screenshots/whatsapp-alert.png" alt="WhatsApp alert received on a broker's phone showing the lead name, role, company, property reference, phone number and buyer message with a required action" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="ev-cap">
+            <span class="ev-n">EV.01</span>
+            <h3>The Broker Alert</h3>
+            <p>The alert exactly as a broker receives it. Name, role, company, property, phone and the buyer's own words — delivered to the app your team already has open all day.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="ev-item">
+          <div class="ev-shot">
+            <img src="./screenshots/inbound-leads.jpg" alt="Inbound command centre table listing leads with property reference, lead tier, response time, contacted-at timestamp and status" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="ev-cap">
+            <span class="ev-n">EV.02</span>
+            <h3>Response Time, Measured</h3>
+            <p>Every lead carries a tier, a property reference and a live response clock. "At Risk" is not a label someone typed — it is calculated from how long the lead has waited.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="ev-item">
+          <div class="ev-shot">
+            <img src="./screenshots/deal-pipeline.jpg" alt="Deal pipeline board with columns for New Inbound, Closed Won, Contract and Negotiation, each card showing property, value and commission" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="ev-cap">
+            <span class="ev-n">EV.03</span>
+            <h3>Deal Pipeline</h3>
+            <p>Qualified inquiries become tracked opportunities with a stage, a property and a commission figure attached — created by the engine, not typed in afterwards.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="ev-item">
+          <div class="ev-shot">
+            <img src="./screenshots/command-center.jpg" alt="Executive command centre showing Active Whales, Uncontacted Leads and Forecasted Commission views side by side" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="ev-cap">
+            <span class="ev-n">EV.04</span>
+            <h3>The Principal's View</h3>
+            <p>Active Whales, Uncontacted Leads and Forecasted Commission on one screen. What management needs to know without asking a single broker.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="btn-row">
+        <a href="#poc" class="btn btn-gold" data-analytics="cta-proof-poc">Book The Live POC</a>
       </div>
     </div>
   </section>
@@ -510,7 +592,7 @@
     <div class="wrap">
       <p class="eyebrow">Management Control</p>
       <h2 class="h2">You shouldn't have to ask your team what happened to a lead.</h2>
-      <p class="lede" style="font-size:16px;">Actual figures depend entirely on your brokerage's own data. Here's the shape of what becomes visible.</p>
+      <p class="lede" style="font-size:16px;">Here's what becomes visible. Your actual figures come from your own data.</p>
       <div class="mgmt-log">
         <div class="mgmt-head"><span>EXAMPLE WORKFLOW</span><span>NOT REAL DATA</span></div>
         <div class="mgmt-row"><span class="k">Lead received</span><span class="v">10:42</span></div>
@@ -523,25 +605,12 @@
     </div>
   </section>
 
-  <!-- MARKET INTELLIGENCE -->
-  <section class="section reveal">
-    <div class="wrap">
-      <p class="eyebrow">Market Context</p>
-      <h2 class="h2">Real market intelligence, when a verified source exists.</h2>
-      <p class="lede" style="font-size:16px;">Transaction volume, average values, and area activity are useful context — only when sourced and dated. This panel is built to display it; it is intentionally empty until a verified feed is connected.</p>
-      <div class="market-card">
-        <span class="tag">Ready for live data</span>
-        <p>No fabricated figures are shown here. Once a verified market data source is connected — Dubai Land Department, a portal analytics feed, or an equivalent — this panel displays the figure, its source, and the date it was last updated.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ROI CALCULATOR -->
   <section class="section reveal" id="roi">
     <div class="wrap">
       <p class="eyebrow">Model The Economics</p>
       <h2 class="h2">One recovered deal changes the math.</h2>
-      <p class="lede" style="font-size:16px;">This is not a promise that one transaction covers the cost. Model it using your own numbers and see where it lands.</p>
+      <p class="lede" style="font-size:16px;">No promises. Put your own numbers in and see where it lands.</p>
       <div class="roi-panel">
         <div class="roi-grid">
           <div>
@@ -579,7 +648,7 @@
     <div class="wrap">
       <p class="eyebrow">Proof, Not Slides</p>
       <h2 class="h2">Don't take our word for it.<br>Watch your own lead move through the Engine.</h2>
-      <p class="lede" style="font-size:16px;">During the POC, we run the actual workflow — not a hypothetical deck.</p>
+      <p class="lede" style="font-size:16px;">We run your workflow live. Not a deck.</p>
       <ol class="steps-list" style="list-style:none; margin:32px 0 0; padding:0; font-family:var(--mono); font-size:13px; color:var(--ink-muted);">
         <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Portal / email inquiry</li>
         <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Parser</li>
@@ -634,46 +703,6 @@
     </div>
   </section>
 
-  <!-- PROOF / SYSTEM EVIDENCE -->
-  <section class="section reveal" id="proof">
-    <div class="wrap">
-      <p class="eyebrow">Inside The Engine</p>
-      <h2 class="h2">This is the system. Not a mockup of one.</h2>
-      <p class="lede" style="font-size:16px;">A live alert from the working Revenue Recovery Engine. Data shown is from the internal test environment — not a client brokerage.</p>
-      <div class="evidence">
-        <figure class="ev-item">
-          <div class="ev-shot">
-            <img src="./screenshots/whatsapp-alert.png" alt="WhatsApp alert delivered to a broker's phone containing the lead name, property, price and the action required" loading="lazy" decoding="async">
-          </div>
-          <figcaption class="ev-cap">
-            <span class="ev-n">EV.01</span>
-            <h3>The Broker Alert</h3>
-            <p>This is the alert exactly as a broker receives it. Everything needed to act — who the buyer is, which property, what they asked for — arrives in the one app your team already has open all day. No inbox to check. No dashboard to log into.</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="btn-row">
-        <a href="#poc" class="btn btn-gold" data-analytics="cta-proof-poc">Book The Live POC</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST / SCENARIOS -->
-  <section class="section reveal">
-    <div class="wrap">
-      <p class="eyebrow">Built For Speed</p>
-      <h2 class="h2">Built for brokerages where speed has a price.</h2>
-      <p class="lede" style="font-size:15px; color:var(--ink-dim);">Hypothetical operational scenarios — not client results.</p>
-      <div class="scen-grid">
-        <div class="scen"><span class="tag">Illustrative</span><br><br>Luxury brokerage</div>
-        <div class="scen"><span class="tag">Illustrative</span><br><br>20-agent team</div>
-        <div class="scen"><span class="tag">Illustrative</span><br><br>100-agent brokerage</div>
-        <div class="scen"><span class="tag">Illustrative</span><br><br>Multi-portal brokerage</div>
-        <div class="scen"><span class="tag">Illustrative</span><br><br>High-volume inbound team</div>
-      </div>
-    </div>
-  </section>
-
   <!-- WHO FOR -->
   <section class="section reveal" id="who">
     <div class="wrap">
@@ -722,16 +751,42 @@
     </div>
   </section>
 
+  <!-- OPERATOR -->
+  <section class="section reveal" id="operator">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Who Builds It</p>
+        <h2 class="h2">You are not buying software from a company.<br>You are engaging the person who builds it.</h2>
+      </div>
+      <div>
+        <p class="lede" style="font-size:17px;">Revenue Recovery Engine™ is designed, deployed and maintained by PRT Circle directly. There is no support ticket queue and no offshore implementation team.</p>
+        <p class="lede" style="font-size:17px;">The same person who architected the engine configures your portal formats, tests your first live lead, and answers when something breaks at 11pm on a Thursday.</p>
+        <ul class="op-list">
+          <li><span class="ok">Direct line</span> No account managers between you and the build.</li>
+          <li><span class="ok">Every reply within one business day</span> Applications reviewed personally.</li>
+          <li><span class="ok">Configured, not templated</span> Built around your portals and your brokers.</li>
+        </ul>
+        <p class="contact-alt" style="text-align:left; margin-top:24px;">Reach the operator directly: <a href="mailto:admin@prtcircle.com">admin@prtcircle.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/n-qwabe-794632288" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        <p class="op-loc">Operating from Johannesburg, Gauteng, South Africa &nbsp;·&nbsp; Deploying into the UAE &amp; Qatar</p>
+      </div>
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">Pricing</p>
-      <h2 class="h2">Priced for what one recovered deal is worth.</h2>
+      <p class="eyebrow">The Engagement</p>
+      <h2 class="h2">Priced against one recovered deal.</h2>
+      <p class="lede" style="font-size:16px;">On a AED 25M villa at 5%, a single recovered transaction is AED 1,250,000 in commission. That is the number this is measured against — not a software budget.</p>
       <div class="price-wrap">
         <div class="price-card"><p class="plabel">Implementation</p><p class="pval">$9,500</p><p class="punit">one-time</p></div>
-        <div class="price-card"><p class="plabel">Ongoing Retainer</p><p class="pval">$799</p><p class="punit">per month</p></div>
+        <div class="price-card"><p class="plabel">Managed Retainer</p><p class="pval">$2,500</p><p class="punit">per month</p></div>
       </div>
-      <p class="price-desc">This is built for brokerages where <b>one recovered transaction can materially change the economics.</b> Deployment capacity is limited because each brokerage requires real configuration, testing, and handover — not a self-serve signup.</p>
+      <p class="price-desc">Every deployment is configured, tested and handed over personally — portal formats, broker routing, WhatsApp templates and pipeline logic are built around your operation, not toggled on from a template. <b>That work sets a hard ceiling on how many brokerages can be onboarded at once.</b></p>
+      <div class="capacity">
+        <span class="cap-dot"></span>
+        <span class="cap-text"><b>Current intake:</b> a limited number of deployment slots per month. When they are taken, the next available start date moves out.</span>
+      </div>
     </div>
   </section>
 
@@ -785,6 +840,7 @@
     <div class="wrap">
       <p class="eyebrow">Apply For Deployment</p>
       <h2 class="h2">Bring one real inquiry. Watch what happens.</h2>
+      <p class="lede" style="font-size:16px;">This is an application, not a checkout. Every request is reviewed against fit before a POC is scheduled — brokerages without meaningful inbound volume are declined, because the engine has nothing to recover.</p>
       <div class="poc-panel">
         <form class="poc-form" id="pocForm">
           <div class="form-grid">
@@ -807,6 +863,8 @@
             </div>
           </div>
         </form>
+          <p class="contact-alt">Prefer email? Write to <a href="mailto:admin@prtcircle.com">admin@prtcircle.com</a> and we'll pick it up from there.</p>
+
         <div class="success-state" id="successState">
           <div class="success-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Your POC request is received.</h3>
@@ -863,8 +921,15 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="./logo.png" alt="PRT Circle logo" width="28" height="28" loading="lazy" decoding="async" style="width:28px; height:28px; object-fit:contain;">
+        <img class="brand-mark" src="./logo.png" alt="PRT Circle" loading="lazy" decoding="async">
         <span class="brand-word">PRT CIRCLE <b>// Revenue Recovery Engine™</b></span>
+      </div>
+      <div class="footer-contact">
+        <span class="fc-label">Contact</span>
+        <a href="mailto:admin@prtcircle.com">admin@prtcircle.com</a>
+        <a href="mailto:support@prtcircle.com">support@prtcircle.com</a>
+        <a href="https://www.linkedin.com/in/n-qwabe-794632288" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="fc-loc">Johannesburg, Gauteng, South&nbsp;Africa</span>
       </div>
       <nav class="footer-links">
         <a href="#mechanism">Product</a>
@@ -872,6 +937,7 @@
         <a href="#demo">Demo</a>
         <a href="#proof">Proof</a>
         <a href="#who">Who It's For</a>
+        <a href="#operator">Operator</a>
         <a href="#faq">FAQ</a>
         <a href="#poc">Apply For Deployment</a>
       </nav>
