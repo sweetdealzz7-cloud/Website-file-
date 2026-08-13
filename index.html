@@ -11,7 +11,7 @@
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0a0a0b;
@@ -83,8 +83,11 @@
 
   /* ---- HERO / ABOVE FOLD ---- */
   .hero{padding:72px 0 88px; border-bottom:1px solid var(--hairline-soft); position:relative; overflow:hidden;}
+  .hero-skyline{position:absolute; left:0; right:0; bottom:0; width:100%; height:180px;
+    opacity:0.16; pointer-events:none; z-index:0;}
+  @media (max-width:720px){.hero-skyline{height:110px; opacity:0.12;}}
   .hero::before{content:""; position:absolute; top:-30%; right:-10%; width:640px; height:640px; background:radial-gradient(circle, rgba(201,162,75,0.10) 0%, rgba(201,162,75,0) 70%); pointer-events:none;}
-  .hero-inner{position:relative; max-width:760px;}
+  .hero-inner{position:relative; max-width:760px; z-index:1;}
   .hero .eyebrow{margin-bottom:22px;}
   .hero h1{font-family:var(--serif); font-weight:500; font-size:clamp(32px, 5.4vw, 58px); line-height:1.08; letter-spacing:-0.015em; margin:0 0 26px;}
   .hero h1 .dim{color:var(--ink-dim);}
@@ -331,6 +334,70 @@
 
   .float-wa{position:fixed; bottom:20px; right:20px; z-index:60; width:54px; height:54px; border-radius:50%; background:var(--whatsapp); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,0.4); text-decoration:none; color:#0b0b0c;}
 
+
+  /* ---- LANGUAGE TOGGLE ---- */
+  .lang-toggle{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.04em;
+    color:var(--ink-muted); background:transparent; border:1px solid var(--hairline);
+    border-radius:var(--radius); padding:9px 14px; cursor:pointer; margin-left:16px;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .lang-toggle:hover{border-color:var(--gold); color:var(--gold-bright);}
+  .lang-toggle .lt-sep{color:var(--hairline); margin:0 3px;}
+  html[dir="rtl"] .lang-toggle{margin-left:0; margin-right:16px;}
+  @media (max-width:960px){.lang-toggle{margin-left:10px; padding:7px 10px; font-size:10px;}
+    html[dir="rtl"] .lang-toggle{margin-right:10px;}}
+
+  /* ---- RTL LAYOUT ---- */
+  html[dir="rtl"] body{font-family:'Tajawal', var(--sans);}
+  html[dir="rtl"] .mono-src, html[dir="rtl"] .eyebrow, html[dir="rtl"] .video-label,
+  html[dir="rtl"] .mech-node, html[dir="rtl"] .stage, html[dir="rtl"] .hero-time,
+  html[dir="rtl"] .step-n, html[dir="rtl"] .dn, html[dir="rtl"] .tag,
+  html[dir="rtl"] .wa-illus, html[dir="rtl"] .mgmt-head, html[dir="rtl"] .mgmt-row,
+  html[dir="rtl"] .roi-field label, html[dir="rtl"] .field label, html[dir="rtl"] .form-note,
+  html[dir="rtl"] .op-loc, html[dir="rtl"] .lang-toggle, html[dir="rtl"] .btn{
+    font-family:var(--mono); direction:ltr; unicode-bidi:embed;
+  }
+  html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3,
+  html[dir="rtl"] p, html[dir="rtl"] li, html[dir="rtl"] label, html[dir="rtl"] summary{
+    font-family:'Tajawal', var(--sans); direction:rtl;
+  }
+  html[dir="rtl"] .h2, html[dir="rtl"] .hero h1, html[dir="rtl"] .final-cta h2,
+  html[dir="rtl"] .interrupt h2{font-family:'Tajawal', var(--sans); font-weight:700;}
+  html[dir="rtl"] body{text-align:right;}
+  html[dir="rtl"] .nav{flex-direction:row-reverse;}
+  html[dir="rtl"] .nav-links{flex-direction:row-reverse;}
+  html[dir="rtl"] .brand{flex-direction:row-reverse;}
+  html[dir="rtl"] .btn-row{flex-direction:row-reverse; justify-content:flex-start;}
+  html[dir="rtl"] .final-cta .btn-row{justify-content:center;}
+  html[dir="rtl"] .split, html[dir="rtl"] .wa-wrap, html[dir="rtl"] .hero-grid{direction:rtl;}
+  html[dir="rtl"] .notfor-list li::before, html[dir="rtl"] .qual-col.yes li::before,
+  html[dir="rtl"] .qual-col.no li::before{content:none;}
+  html[dir="rtl"] .notfor-list li, html[dir="rtl"] .qual-col li{padding-right:0;}
+  html[dir="rtl"] .steps-list li, html[dir="rtl"] .op-list li{flex-direction:row-reverse; text-align:right;}
+  html[dir="rtl"] .form-grid{direction:rtl;}
+  html[dir="rtl"] .footer-grid{flex-direction:row-reverse;}
+  html[dir="rtl"] .footer-links{flex-direction:row-reverse;}
+  html[dir="rtl"] .footer-contact{align-items:flex-end;}
+  html[dir="rtl"] .capacity{flex-direction:row-reverse; text-align:right;}
+  html[dir="rtl"] .float-wa{right:auto; left:20px;}
+  html[dir="rtl"] .sec-list li{flex-direction:row-reverse; text-align:right;}
+  html[dir="rtl"] .lede, html[dir="rtl"] .lede.strong{margin-right:0;}
+
+
+  .sticky-mobile-cta{display:none; position:fixed; left:0; right:0; bottom:0; z-index:70;
+    background:rgba(10,10,11,0.97); backdrop-filter:blur(8px);
+    border-top:1px solid var(--hairline); padding:10px 14px;
+    align-items:center; justify-content:space-between; gap:10px;}
+  .sticky-mobile-cta .smc-text{font-size:12px; color:var(--ink-muted); line-height:1.3;}
+  .sticky-mobile-cta .smc-text b{color:var(--ivory); display:block; font-size:13px;}
+  .sticky-mobile-cta .btn{padding:11px 16px; font-size:12.5px; white-space:nowrap;}
+  @media (max-width:720px){
+    .sticky-mobile-cta{display:flex;}
+    body{padding-bottom:64px;}
+  }
+  html[dir="rtl"] .sticky-mobile-cta{flex-direction:row-reverse; text-align:right;}
+
   .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease;}
   .reveal.in{opacity:1; transform:translateY(0);}
   @media (prefers-reduced-motion: reduce){.reveal{opacity:1; transform:none; transition:none;}}
@@ -355,6 +422,7 @@
     </ul>
     <a href="#poc" class="btn btn-gold nav-cta" data-analytics="cta-nav-poc">Book The Live POC</a>
     <a href="#poc" class="btn btn-gold nav-mobile-cta" data-analytics="cta-nav-poc-mobile">Book POC</a>
+    <button type="button" id="langToggle" class="lang-toggle" aria-label="Switch language / تبديل اللغة">EN <span class="lt-sep">/</span> <span dir="rtl">عربي</span></button>
   </div>
 </header>
 
@@ -362,35 +430,43 @@
 
   <!-- ABOVE THE FOLD -->
   <section class="hero">
+    <svg class="hero-skyline" viewBox="0 0 1400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="#c9a24b" stroke-width="1">
+        <path d="M0,260 L0,190 L28,190 L28,150 L46,150 L46,190 L70,190 L70,120 L92,120 L92,190 L120,190 L120,95 L128,95 L128,60 L136,60 L136,95 L144,95 L144,190 L175,190 L175,140 L200,140 L200,190 L230,190 L230,100 L245,80 L260,100 L260,190 L300,190 L300,160 L330,160 L330,190 L365,190 L365,50 L372,20 L379,50 L379,190 L420,190 L420,130 L450,130 L450,190 L490,190 L490,170 L520,170 L520,190 L560,190 L560,110 L575,90 L590,110 L590,190 L630,190 L630,145 L660,145 L660,190 L700,190 L700,70 L710,40 L720,70 L720,190 L760,190 L760,155 L790,155 L790,190 L825,190 L825,115 L840,95 L855,115 L855,190 L895,190 L895,165 L925,165 L925,190 L960,190 L960,55 L968,25 L976,55 L976,190 L1015,190 L1015,135 L1045,135 L1045,190 L1080,190 L1080,105 L1095,85 L1110,105 L1110,190 L1150,190 L1150,150 L1180,150 L1180,190 L1215,190 L1215,90 L1225,60 L1235,90 L1235,190 L1275,190 L1275,160 L1305,160 L1305,190 L1340,190 L1340,120 L1360,120 L1360,190 L1400,190 L1400,260 Z" stroke-width="0"/>
+      </g>
+      <g fill="none" stroke="#c9a24b" stroke-width="1.1" opacity="0.55">
+        <line x1="0" y1="190" x2="1400" y2="190"/>
+      </g>
+    </svg>
     <div class="wrap hero-inner">
-      <p class="eyebrow">PRT CIRCLE // REVENUE RECOVERY ENGINE™ — UAE &amp; QATAR</p>
-      <h1>The lead arrived.<br><span class="dim">What happened next?</span></h1>
-      <span class="hero-time">11:47 PM — inquiry received</span>
-      <p class="lede">A high-value buyer can enter your brokerage at any hour. The opportunity doesn't wait for your office to open.</p>
-      <p class="lede strong">Revenue Recovery Engine™ captures, classifies, routes, alerts and tracks valuable inbound property inquiries before they disappear into an inbox.</p>
+      <p class="eyebrow" data-i18n data-en="PRT CIRCLE // REVENUE RECOVERY ENGINE™ — UAE &amp;amp; QATAR" data-ar="بي آر تي سيركل // محرك استرداد الإيرادات™ — الإمارات وقطر">PRT CIRCLE // REVENUE RECOVERY ENGINE™ — UAE &amp; QATAR</p>
+      <h1>The lead arrived.<br><span class="dim" data-i18n data-en="What happened next?" data-ar="ماذا حدث بعد ذلك؟">What happened next?</span></h1>
+      <span class="hero-time" data-i18n data-en="11:47 PM — inquiry received" data-ar="١١:٤٧ مساءً — تم استلام الاستفسار">11:47 PM — inquiry received</span>
+      <p class="lede" data-i18n data-en="A high-value buyer can enter your brokerage at any hour. The opportunity doesn&#x27;t wait for your office to open." data-ar="قد يتواصل مشترٍ عالي القيمة مع وكالتك في أي ساعة. الفرصة لا تنتظر حتى يفتح مكتبك أبوابه.">A high-value buyer can enter your brokerage at any hour. The opportunity doesn't wait for your office to open.</p>
+      <p class="lede strong" data-i18n data-en="Revenue Recovery Engine™ captures, classifies, routes, alerts and tracks valuable inbound property inquiries before they disappear into an inbox." data-ar="يقوم محرك استرداد الإيرادات™ برصد الاستفسارات العقارية القيّمة وتصنيفها وتوجيهها والتنبيه بشأنها ومتابعتها — قبل أن تضيع في صندوق البريد.">Revenue Recovery Engine™ captures, classifies, routes, alerts and tracks valuable inbound property inquiries before they disappear into an inbox.</p>
       <div class="btn-row">
-        <a href="#mechanism" class="btn btn-gold" data-analytics="cta-hero-see">See The Engine Work</a>
-        <a href="#poc" class="btn btn-ghost" data-analytics="cta-hero-poc">Apply For A Live POC</a>
+        <a href="#mechanism" class="btn btn-gold" data-analytics="cta-hero-see" data-i18n data-en="See The Engine Work" data-ar="شاهد المحرك أثناء العمل">See The Engine Work</a>
+        <a href="#poc" class="btn btn-ghost" data-analytics="cta-hero-poc" data-i18n data-en="Apply For A Live POC" data-ar="تقدّم لحجز عرض حي">Apply For A Live POC</a>
       </div>
-      <p class="hero-gate">By application. Deployment slots are limited and reviewed for fit.</p>
+      <p class="hero-gate" data-i18n data-en="By application. Deployment slots are limited and reviewed for fit." data-ar="بالتقديم فقط. عدد مواعيد النشر محدود ويخضع كل طلب للمراجعة.">By application. Deployment slots are limited and reviewed for fit.</p>
     </div>
   </section>
 
   <!-- VISUAL HERO / MECHANISM -->
   <section class="section reveal" id="mechanism">
     <div class="wrap">
-      <p class="eyebrow">The Mechanism</p>
-      <h2 class="h2">One inquiry. One controlled path to revenue.</h2>
+      <p class="eyebrow" data-i18n data-en="The Mechanism" data-ar="آلية العمل">The Mechanism</p>
+      <h2 class="h2" data-i18n data-en="One inquiry. One controlled path to revenue." data-ar="استفسار واحد. مسار واحد محكم نحو الإيراد.">One inquiry. One controlled path to revenue.</h2>
       <div class="mech">
-        <div class="mech-head"><span><span class="mech-dot"></span>ENGINE STATUS</span><span>OPERATIONAL</span></div>
+        <div class="mech-head"><span><span class="mech-dot"></span data-i18n data-en="ENGINE STATUS" data-ar="حالة المحرك">ENGINE STATUS</span><span data-i18n data-en="OPERATIONAL" data-ar="يعمل الآن">OPERATIONAL</span></div>
         <div class="mech-flow">
-          <span class="mech-node">PORTAL INQUIRY</span><span class="mech-arrow">→</span>
-          <span class="mech-node">ENGINE</span><span class="mech-arrow">→</span>
-          <span class="mech-node gold">LEAD CLASSIFIED</span><span class="mech-arrow">→</span>
-          <span class="mech-node">WHATSAPP ALERT</span><span class="mech-arrow">→</span>
-          <span class="mech-node">BROKER ACTION</span><span class="mech-arrow">→</span>
-          <span class="mech-node">DEAL</span><span class="mech-arrow">→</span>
-          <span class="mech-node gold">COMMISSION</span>
+          <span class="mech-node" data-i18n data-en="PORTAL INQUIRY" data-ar="استفسار من البوابة">PORTAL INQUIRY</span><span class="mech-arrow">→</span>
+          <span class="mech-node" data-i18n data-en="ENGINE" data-ar="المحرك">ENGINE</span><span class="mech-arrow">→</span>
+          <span class="mech-node gold" data-i18n data-en="LEAD CLASSIFIED" data-ar="تم تصنيف العميل المحتمل">LEAD CLASSIFIED</span><span class="mech-arrow">→</span>
+          <span class="mech-node" data-i18n data-en="WHATSAPP ALERT" data-ar="تنبيه واتساب">WHATSAPP ALERT</span><span class="mech-arrow">→</span>
+          <span class="mech-node" data-i18n data-en="BROKER ACTION" data-ar="إجراء الوسيط">BROKER ACTION</span><span class="mech-arrow">→</span>
+          <span class="mech-node" data-i18n data-en="DEAL" data-ar="الصفقة">DEAL</span><span class="mech-arrow">→</span>
+          <span class="mech-node gold" data-i18n data-en="COMMISSION" data-ar="العمولة">COMMISSION</span>
         </div>
       </div>
     </div>
@@ -399,28 +475,28 @@
   <!-- THE INVISIBLE REVENUE LEAK -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">The Invisible Revenue Leak</p>
+      <p class="eyebrow" data-i18n data-en="The Invisible Revenue Leak" data-ar="تسرّب الإيرادات غير المرئي">The Invisible Revenue Leak</p>
       <h2 class="h2">The leak is not your lead generation.<br>It's what happens after the lead arrives.</h2>
-      <p class="lede" style="font-size:16px;">You already paid for the inquiry. It only becomes revenue if somebody acts on it. Missed leads don't fail loudly — they just vanish. No call. No viewing. No deal. No commission.</p>
+      <p class="lede" style="font-size:16px;" data-i18n data-en="You already paid for the inquiry. It only becomes revenue if somebody acts on it. Missed leads don&#x27;t fail loudly — they just vanish. No call. No viewing. No deal. No commission." data-ar="أنت دفعت بالفعل مقابل هذا الاستفسار. ولن يتحول إلى إيراد إلا إذا تصرّف أحد بشأنه. العملاء المحتملون المفقودون لا يفشلون بصخب — بل يختفون ببساطة. لا اتصال. لا معاينة. لا صفقة. لا عمولة.">You already paid for the inquiry. It only becomes revenue if somebody acts on it. Missed leads don't fail loudly — they just vanish. No call. No viewing. No deal. No commission.</p>
       <div class="leak-grid">
         <div class="leak-col before">
-          <span class="leak-label">Without The Engine</span>
-          <div class="leak-step">Lead Arrives</div>
-          <div class="leak-step">Shared Inbox</div>
-          <div class="leak-step">Delay</div>
-          <div class="leak-step">Missed Call</div>
-          <div class="leak-step">No Follow-Up</div>
-          <div class="leak-step">Competitor Responds</div>
-          <div class="leak-step">Lost Commission</div>
+          <span class="leak-label" data-i18n data-en="Without The Engine" data-ar="بدون المحرك">Without The Engine</span>
+          <div class="leak-step" data-i18n data-en="Lead Arrives" data-ar="وصول العميل المحتمل">Lead Arrives</div>
+          <div class="leak-step" data-i18n data-en="Shared Inbox" data-ar="صندوق بريد مشترك">Shared Inbox</div>
+          <div class="leak-step" data-i18n data-en="Delay" data-ar="تأخير">Delay</div>
+          <div class="leak-step" data-i18n data-en="Missed Call" data-ar="مكالمة فائتة">Missed Call</div>
+          <div class="leak-step" data-i18n data-en="No Follow-Up" data-ar="لا متابعة">No Follow-Up</div>
+          <div class="leak-step" data-i18n data-en="Competitor Responds" data-ar="المنافس يستجيب">Competitor Responds</div>
+          <div class="leak-step" data-i18n data-en="Lost Commission" data-ar="عمولة ضائعة">Lost Commission</div>
         </div>
         <div class="leak-col after">
-          <span class="leak-label">With The Engine</span>
-          <div class="leak-step">Lead Arrives</div>
-          <div class="leak-step">Classification</div>
-          <div class="leak-step">WhatsApp Alert</div>
-          <div class="leak-step">Broker Acts</div>
-          <div class="leak-step">Follow-Up Tracked</div>
-          <div class="leak-step">Deal Created</div>
+          <span class="leak-label" data-i18n data-en="With The Engine" data-ar="مع المحرك">With The Engine</span>
+          <div class="leak-step" data-i18n data-en="Lead Arrives" data-ar="وصول العميل المحتمل">Lead Arrives</div>
+          <div class="leak-step" data-i18n data-en="Classification" data-ar="التصنيف">Classification</div>
+          <div class="leak-step" data-i18n data-en="WhatsApp Alert" data-ar="تنبيه واتساب">WhatsApp Alert</div>
+          <div class="leak-step" data-i18n data-en="Broker Acts" data-ar="الوسيط يتصرف">Broker Acts</div>
+          <div class="leak-step" data-i18n data-en="Follow-Up Tracked" data-ar="المتابعة مسجّلة">Follow-Up Tracked</div>
+          <div class="leak-step" data-i18n data-en="Deal Created" data-ar="تم إنشاء الصفقة">Deal Created</div>
         </div>
       </div>
     </div>
@@ -429,9 +505,9 @@
   <!-- PROOF / SYSTEM EVIDENCE -->
   <section class="section reveal" id="proof">
     <div class="wrap">
-      <p class="eyebrow">Inside The Engine</p>
-      <h2 class="h2">This is the system. Not a mockup of one.</h2>
-      <p class="lede" style="font-size:16px;">Four views from the working engine. Test-environment data, not a client brokerage.</p>
+      <p class="eyebrow" data-i18n data-en="Inside The Engine" data-ar="داخل المحرك">Inside The Engine</p>
+      <h2 class="h2" data-i18n data-en="This is the system. Not a mockup of one." data-ar="هذا هو النظام الفعلي. وليس نموذجاً تخيلياً له.">This is the system. Not a mockup of one.</h2>
+      <p class="lede" style="font-size:16px;" data-i18n data-en="Four views from the working engine. Test-environment data, not a client brokerage." data-ar="أربع لقطات من المحرك أثناء عمله الفعلي. البيانات من بيئة اختبار داخلية، وليست من وكالة عميل حقيقية.">Four views from the working engine. Test-environment data, not a client brokerage.</p>
       <div class="evidence">
         <figure class="ev-item">
           <div class="ev-shot">
@@ -439,8 +515,8 @@
           </div>
           <figcaption class="ev-cap">
             <span class="ev-n">EV.01</span>
-            <h3>The Broker Alert</h3>
-            <p>The alert exactly as a broker receives it. Name, role, company, property, phone and the buyer's own words — delivered to the app your team already has open all day.</p>
+            <h3 data-i18n data-en="The Broker Alert" data-ar="تنبيه الوسيط">The Broker Alert</h3>
+            <p data-i18n data-en="The alert exactly as a broker receives it. Name, role, company, property, phone and the buyer&#x27;s own words — delivered to the app your team already has open all day." data-ar="التنبيه تماماً كما يستلمه الوسيط. الاسم، المسمى الوظيفي، الشركة، العقار، رقم الهاتف، وكلمات المشتري نفسه — يصل إلى التطبيق الذي يبقيه فريقك مفتوحاً طوال اليوم.">The alert exactly as a broker receives it. Name, role, company, property, phone and the buyer's own words — delivered to the app your team already has open all day.</p>
           </figcaption>
         </figure>
 
@@ -450,8 +526,8 @@
           </div>
           <figcaption class="ev-cap">
             <span class="ev-n">EV.02</span>
-            <h3>Response Time, Measured</h3>
-            <p>Every lead carries a tier, a property reference and a live response clock. "At Risk" is not a label someone typed — it is calculated from how long the lead has waited.</p>
+            <h3 data-i18n data-en="Response Time, Measured" data-ar="وقت الاستجابة، مقاساً بدقة">Response Time, Measured</h3>
+            <p data-i18n data-en="Every lead carries a tier, a property reference and a live response clock. &quot;At Risk&quot; is not a label someone typed — it is calculated from how long the lead has waited." data-ar="كل عميل محتمل يحمل تصنيفاً ومرجع عقار وساعة استجابة حية. عبارة &quot;معرّض للخطر&quot; ليست تسمية كتبها أحد يدوياً — بل قيمة محسوبة وفق مدة انتظار العميل المحتمل.">Every lead carries a tier, a property reference and a live response clock. "At Risk" is not a label someone typed — it is calculated from how long the lead has waited.</p>
           </figcaption>
         </figure>
 
@@ -461,8 +537,8 @@
           </div>
           <figcaption class="ev-cap">
             <span class="ev-n">EV.03</span>
-            <h3>Deal Pipeline</h3>
-            <p>Qualified inquiries become tracked opportunities with a stage, a property and a commission figure attached — created by the engine, not typed in afterwards.</p>
+            <h3 data-i18n data-en="Deal Pipeline" data-ar="مسار الصفقات">Deal Pipeline</h3>
+            <p data-i18n data-en="Qualified inquiries become tracked opportunities with a stage, a property and a commission figure attached — created by the engine, not typed in afterwards." data-ar="تتحول الاستفسارات المؤهّلة إلى فرص متابَعة، بمرحلة وعقار ورقم عمولة مرفق — ينشئها المحرك تلقائياً، لا تُكتب لاحقاً يدوياً.">Qualified inquiries become tracked opportunities with a stage, a property and a commission figure attached — created by the engine, not typed in afterwards.</p>
           </figcaption>
         </figure>
 
@@ -472,13 +548,13 @@
           </div>
           <figcaption class="ev-cap">
             <span class="ev-n">EV.04</span>
-            <h3>The Principal's View</h3>
-            <p>Active Whales, Uncontacted Leads and Forecasted Commission on one screen. What management needs to know without asking a single broker.</p>
+            <h3 data-i18n data-en="The Principal&#x27;s View" data-ar="منظور صاحب الوكالة">The Principal's View</h3>
+            <p data-i18n data-en="Active Whales, Uncontacted Leads and Forecasted Commission on one screen. What management needs to know without asking a single broker." data-ar="العملاء الكبار النشطون، والعملاء غير المتواصَل معهم، والعمولة المتوقعة — كلها في شاشة واحدة. ما تحتاج الإدارة معرفته دون سؤال أي وسيط.">Active Whales, Uncontacted Leads and Forecasted Commission on one screen. What management needs to know without asking a single broker.</p>
           </figcaption>
         </figure>
       </div>
       <div class="btn-row">
-        <a href="#poc" class="btn btn-gold" data-analytics="cta-proof-poc">Book The Live POC</a>
+        <a href="#poc" class="btn btn-gold" data-analytics="cta-proof-poc" data-i18n data-en="Book The Live POC" data-ar="احجز العرض الحي">Book The Live POC</a>
       </div>
     </div>
   </section>
@@ -486,68 +562,68 @@
   <!-- PATTERN INTERRUPT -->
   <section class="interrupt reveal">
     <div class="wrap">
-      <h2>Your broker may not know they lost the deal.<br>Management may never know it happened.</h2>
-      <p>A CRM can show you the leads that were entered into it. It cannot tell you how many valuable inquiries died before anyone acted. The Engine is the recovery layer — the part of the workflow a CRM was never built to cover.</p>
+      <h2 data-i18n data-en="Your broker may not know they lost the deal.&lt;br&gt;Management may never know it happened." data-ar="قد لا يعلم وسيطك أنه خسر الصفقة.&lt;br&gt;وقد لا تعلم الإدارة بذلك إطلاقاً.">Your broker may not know they lost the deal.<br>Management may never know it happened.</h2>
+      <p data-i18n data-en="A CRM can show you the leads that were entered into it. It cannot tell you how many valuable inquiries died before anyone acted. The Engine is the recovery layer — the part of the workflow a CRM was never built to cover." data-ar="يستطيع نظام إدارة علاقات العملاء أن يعرض لك ما أُدخل فيه من عملاء محتملين. لكنه لا يستطيع إخبارك كم استفساراً قيّماً ضاع قبل أن يتحرك أحد. المحرك هو طبقة الاسترداد — الجزء من سير العمل الذي لم يُصمَّم نظام إدارة علاقات العملاء لتغطيته أصلاً.">A CRM can show you the leads that were entered into it. It cannot tell you how many valuable inquiries died before anyone acted. The Engine is the recovery layer — the part of the workflow a CRM was never built to cover.</p>
     </div>
   </section>
 
   <!-- BEFORE / AFTER -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">Operational Transformation</p>
-      <h2 class="h2">Before and after, inquiry by inquiry.</h2>
+      <p class="eyebrow" data-i18n data-en="Operational Transformation" data-ar="التحوّل التشغيلي">Operational Transformation</p>
+      <h2 class="h2" data-i18n data-en="Before and after, inquiry by inquiry." data-ar="قبل وبعد، استفساراً باستفسار.">Before and after, inquiry by inquiry.</h2>
       <div class="ba-wrap">
         <div class="ba-main">
           <div class="ba-col before">
-            <span class="leak-label">Before</span>
-            <p>A buyer submits an inquiry through a property portal.</p>
-            <p>The email lands in a shared inbox.</p>
-            <p>The broker sees it later.</p>
-            <p>The buyer has already contacted several agencies.</p>
+            <span class="leak-label" data-i18n data-en="Before" data-ar="قبل">Before</span>
+            <p data-i18n data-en="A buyer submits an inquiry through a property portal." data-ar="يرسل المشتري استفساراً عبر إحدى بوابات العقارات.">A buyer submits an inquiry through a property portal.</p>
+            <p data-i18n data-en="The email lands in a shared inbox." data-ar="يصل البريد الإلكتروني إلى صندوق بريد مشترك.">The email lands in a shared inbox.</p>
+            <p data-i18n data-en="The broker sees it later." data-ar="يراه الوسيط لاحقاً.">The broker sees it later.</p>
+            <p data-i18n data-en="The buyer has already contacted several agencies." data-ar="يكون المشتري قد تواصل بالفعل مع عدة وكالات أخرى.">The buyer has already contacted several agencies.</p>
           </div>
           <div class="ba-col after">
-            <span class="leak-label">After</span>
-            <p>The inquiry is captured automatically.</p>
-            <p>Buyer and property are identified and matched.</p>
-            <p>A WhatsApp alert reaches the responsible broker.</p>
-            <p>Management can see that a response happened — and when.</p>
+            <span class="leak-label" data-i18n data-en="After" data-ar="بعد">After</span>
+            <p data-i18n data-en="The inquiry is captured automatically." data-ar="يُرصد الاستفسار تلقائياً.">The inquiry is captured automatically.</p>
+            <p data-i18n data-en="Buyer and property are identified and matched." data-ar="يتم تحديد المشتري والعقار ومطابقتهما.">Buyer and property are identified and matched.</p>
+            <p data-i18n data-en="A WhatsApp alert reaches the responsible broker." data-ar="يصل تنبيه واتساب إلى الوسيط المسؤول.">A WhatsApp alert reaches the responsible broker.</p>
+            <p data-i18n data-en="Management can see that a response happened — and when." data-ar="تستطيع الإدارة رؤية أن الاستجابة حدثت — ومتى بالتحديد.">Management can see that a response happened — and when.</p>
           </div>
         </div>
         <div class="ba-chips">
           <div class="ba-chip">
-            <p class="bt">Duplicate Leads</p>
-            <p class="b-line">Same buyer, logged twice, worked twice.</p>
-            <p class="a-line">Matched once. No duplicate broker effort.</p>
+            <p class="bt" data-i18n data-en="Duplicate Leads" data-ar="العملاء المكررون">Duplicate Leads</p>
+            <p class="b-line" data-i18n data-en="Same buyer, logged twice, worked twice." data-ar="نفس المشتري، مُسجَّل مرتين، ويُعمل عليه مرتين.">Same buyer, logged twice, worked twice.</p>
+            <p class="a-line" data-i18n data-en="Matched once. No duplicate broker effort." data-ar="مطابقة واحدة فقط. لا جهد مضاعف من الوسيط.">Matched once. No duplicate broker effort.</p>
           </div>
           <div class="ba-chip">
-            <p class="bt">High-Value Buyers</p>
-            <p class="b-line">Treated the same as every other inquiry.</p>
-            <p class="a-line">Flagged and prioritized on arrival.</p>
+            <p class="bt" data-i18n data-en="High-Value Buyers" data-ar="المشترون عالو القيمة">High-Value Buyers</p>
+            <p class="b-line" data-i18n data-en="Treated the same as every other inquiry." data-ar="يُعامَلون كأي استفسار عادي آخر.">Treated the same as every other inquiry.</p>
+            <p class="a-line" data-i18n data-en="Flagged and prioritized on arrival." data-ar="يُصنَّفون ويُعطَون الأولوية فور وصولهم.">Flagged and prioritized on arrival.</p>
           </div>
           <div class="ba-chip">
-            <p class="bt">Property Matching</p>
-            <p class="b-line">Broker manually cross-checks the listing.</p>
-            <p class="a-line">Property identified and attached automatically.</p>
+            <p class="bt" data-i18n data-en="Property Matching" data-ar="مطابقة العقار">Property Matching</p>
+            <p class="b-line" data-i18n data-en="Broker manually cross-checks the listing." data-ar="يتحقق الوسيط من الإعلان يدوياً.">Broker manually cross-checks the listing.</p>
+            <p class="a-line" data-i18n data-en="Property identified and attached automatically." data-ar="يُحدَّد العقار ويُربَط تلقائياً.">Property identified and attached automatically.</p>
           </div>
           <div class="ba-chip">
-            <p class="bt">Broker Assignment</p>
-            <p class="b-line">Whoever opens the inbox first, or nobody.</p>
-            <p class="a-line">Routed to the broker responsible for it.</p>
+            <p class="bt" data-i18n data-en="Broker Assignment" data-ar="توزيع الوسطاء">Broker Assignment</p>
+            <p class="b-line" data-i18n data-en="Whoever opens the inbox first, or nobody." data-ar="أياً كان من يفتح صندوق البريد أولاً — أو لا أحد.">Whoever opens the inbox first, or nobody.</p>
+            <p class="a-line" data-i18n data-en="Routed to the broker responsible for it." data-ar="يُوجَّه إلى الوسيط المسؤول عنه مباشرة.">Routed to the broker responsible for it.</p>
           </div>
           <div class="ba-chip">
-            <p class="bt">Response-Time Tracking</p>
-            <p class="b-line">Nobody actually knows how long it took.</p>
-            <p class="a-line">Time from arrival to contact is recorded.</p>
+            <p class="bt" data-i18n data-en="Response-Time Tracking" data-ar="تتبّع وقت الاستجابة">Response-Time Tracking</p>
+            <p class="b-line" data-i18n data-en="Nobody actually knows how long it took." data-ar="لا أحد يعرف فعلياً كم استغرق الأمر.">Nobody actually knows how long it took.</p>
+            <p class="a-line" data-i18n data-en="Time from arrival to contact is recorded." data-ar="يُسجَّل الوقت من الوصول حتى التواصل.">Time from arrival to contact is recorded.</p>
           </div>
           <div class="ba-chip">
-            <p class="bt">Deal Creation</p>
-            <p class="b-line">Manually entered later, if at all.</p>
-            <p class="a-line">Created the moment the lead qualifies.</p>
+            <p class="bt" data-i18n data-en="Deal Creation" data-ar="إنشاء الصفقة">Deal Creation</p>
+            <p class="b-line" data-i18n data-en="Manually entered later, if at all." data-ar="تُدخَل يدوياً لاحقاً، إن حدث ذلك أصلاً.">Manually entered later, if at all.</p>
+            <p class="a-line" data-i18n data-en="Created the moment the lead qualifies." data-ar="تُنشَأ لحظة تأهّل العميل المحتمل.">Created the moment the lead qualifies.</p>
           </div>
           <div class="ba-chip">
-            <p class="bt">Commission Visibility</p>
-            <p class="b-line">Invisible until a deal closes.</p>
-            <p class="a-line">Visible across the pipeline from day one.</p>
+            <p class="bt" data-i18n data-en="Commission Visibility" data-ar="وضوح العمولة">Commission Visibility</p>
+            <p class="b-line" data-i18n data-en="Invisible until a deal closes." data-ar="غير مرئية حتى إغلاق الصفقة.">Invisible until a deal closes.</p>
+            <p class="a-line" data-i18n data-en="Visible across the pipeline from day one." data-ar="مرئية عبر مسار الصفقات منذ اليوم الأول.">Visible across the pipeline from day one.</p>
           </div>
         </div>
       </div>
@@ -558,17 +634,17 @@
   <section class="section reveal">
     <div class="wrap wa-wrap">
       <div>
-        <p class="eyebrow">The Alert Layer</p>
-        <h2 class="h2">Your brokers already live in WhatsApp.<br>The Engine meets them there.</h2>
-        <p class="lede">No new workflow to learn just to react to an inquiry. The alert arrives through the channel your brokerage already uses, all day, every day.</p>
-        <p class="lede" style="color:var(--ink);">The message is only useful if it leads to action.</p>
+        <p class="eyebrow" data-i18n data-en="The Alert Layer" data-ar="طبقة التنبيهات">The Alert Layer</p>
+        <h2 class="h2" data-i18n data-en="Your brokers already live in WhatsApp.&lt;br&gt;The Engine meets them there." data-ar="وسطاؤك موجودون بالفعل على واتساب.&lt;br&gt;والمحرك يصل إليهم هناك.">Your brokers already live in WhatsApp.<br>The Engine meets them there.</h2>
+        <p class="lede" data-i18n data-en="No new workflow to learn just to react to an inquiry. The alert arrives through the channel your brokerage already uses, all day, every day." data-ar="لا حاجة لتعلّم سير عمل جديد لمجرد الرد على استفسار. التنبيه يصل عبر القناة التي تستخدمها وكالتك بالفعل، طوال اليوم، كل يوم.">No new workflow to learn just to react to an inquiry. The alert arrives through the channel your brokerage already uses, all day, every day.</p>
+        <p class="lede" style="color:var(--ink);" data-i18n data-en="The message is only useful if it leads to action." data-ar="الرسالة لا تنفع إلا إذا أدّت إلى إجراء فعلي.">The message is only useful if it leads to action.</p>
         <div class="btn-row">
-          <a href="#demo" class="btn btn-ghost" data-analytics="cta-wa-workflow">Book The Live POC</a>
+          <a href="#demo" class="btn btn-ghost" data-analytics="cta-wa-workflow" data-i18n data-en="Book The Live POC" data-ar="احجز العرض الحي">Book The Live POC</a>
         </div>
       </div>
       <div>
         <div class="phone">
-          <div class="phone-top"><span class="phone-avatar">RB</span><span>Revenue Recovery Engine</span></div>
+          <div class="phone-top"><span class="phone-avatar">RB</span><span data-i18n data-en="Revenue Recovery Engine" data-ar="محرك استرداد الإيرادات">Revenue Recovery Engine</span></div>
           <div class="phone-body">
             <div class="wa-bubble">
               <span class="wa-title">🚨 NEW HIGH-VALUE LEAD</span>
@@ -582,7 +658,7 @@
             <div class="wa-time">09:41</div>
           </div>
         </div>
-        <p class="wa-illus">Illustrative alert — not a real transaction</p>
+        <p class="wa-illus" data-i18n data-en="Illustrative alert — not a real transaction" data-ar="تنبيه توضيحي — وليس صفقة حقيقية">Illustrative alert — not a real transaction</p>
       </div>
     </div>
   </section>
@@ -590,17 +666,17 @@
   <!-- MANAGEMENT CONTROL -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">Management Control</p>
-      <h2 class="h2">You shouldn't have to ask your team what happened to a lead.</h2>
-      <p class="lede" style="font-size:16px;">Here's what becomes visible. Your actual figures come from your own data.</p>
+      <p class="eyebrow" data-i18n data-en="Management Control" data-ar="التحكم الإداري">Management Control</p>
+      <h2 class="h2" data-i18n data-en="You shouldn&#x27;t have to ask your team what happened to a lead." data-ar="لا ينبغي أن تضطر لسؤال فريقك عمّا حدث لعميل محتمل.">You shouldn't have to ask your team what happened to a lead.</h2>
+      <p class="lede" style="font-size:16px;" data-i18n data-en="Here&#x27;s what becomes visible. Your actual figures come from your own data." data-ar="هذا ما يصبح مرئياً. أرقامك الفعلية تأتي من بياناتك أنت.">Here's what becomes visible. Your actual figures come from your own data.</p>
       <div class="mgmt-log">
-        <div class="mgmt-head"><span>EXAMPLE WORKFLOW</span><span>NOT REAL DATA</span></div>
-        <div class="mgmt-row"><span class="k">Lead received</span><span class="v">10:42</span></div>
-        <div class="mgmt-row"><span class="k">Broker assigned</span><span class="v">10:43</span></div>
-        <div class="mgmt-row"><span class="k">First contact</span><span class="v">10:46</span></div>
-        <div class="mgmt-row"><span class="k">Response time</span><span class="v">4 minutes</span></div>
-        <div class="mgmt-row"><span class="k">Stage</span><span class="v">Viewing Scheduled</span></div>
-        <div class="mgmt-row hi"><span class="k">Potential commission</span><span class="v">AED X</span></div>
+        <div class="mgmt-head"><span data-i18n data-en="EXAMPLE WORKFLOW" data-ar="سير عمل توضيحي">EXAMPLE WORKFLOW</span><span data-i18n data-en="NOT REAL DATA" data-ar="ليست بيانات حقيقية">NOT REAL DATA</span></div>
+        <div class="mgmt-row"><span class="k" data-i18n data-en="Lead received" data-ar="تم استلام العميل المحتمل">Lead received</span><span class="v">10:42</span></div>
+        <div class="mgmt-row"><span class="k" data-i18n data-en="Broker assigned" data-ar="تم تعيين الوسيط">Broker assigned</span><span class="v">10:43</span></div>
+        <div class="mgmt-row"><span class="k" data-i18n data-en="First contact" data-ar="أول تواصل">First contact</span><span class="v">10:46</span></div>
+        <div class="mgmt-row"><span class="k" data-i18n data-en="Response time" data-ar="وقت الاستجابة">Response time</span><span class="v" data-i18n data-en="4 minutes" data-ar="٤ دقائق">4 minutes</span></div>
+        <div class="mgmt-row"><span class="k" data-i18n data-en="Stage" data-ar="المرحلة">Stage</span><span class="v" data-i18n data-en="Viewing Scheduled" data-ar="تم جدولة المعاينة">Viewing Scheduled</span></div>
+        <div class="mgmt-row hi"><span class="k" data-i18n data-en="Potential commission" data-ar="العمولة المحتملة">Potential commission</span><span class="v">AED X</span></div>
       </div>
     </div>
   </section>
@@ -608,9 +684,9 @@
   <!-- ROI CALCULATOR -->
   <section class="section reveal" id="roi">
     <div class="wrap">
-      <p class="eyebrow">Model The Economics</p>
-      <h2 class="h2">One recovered deal changes the math.</h2>
-      <p class="lede" style="font-size:16px;">No promises. Put your own numbers in and see where it lands.</p>
+      <p class="eyebrow" data-i18n data-en="Model The Economics" data-ar="اختبر الجدوى الاقتصادية">Model The Economics</p>
+      <h2 class="h2" data-i18n data-en="One recovered deal changes the math." data-ar="صفقة واحدة مستردة تغيّر المعادلة.">One recovered deal changes the math.</h2>
+      <p class="lede" style="font-size:16px;" data-i18n data-en="No promises. Put your own numbers in and see where it lands." data-ar="لا وعود. أدخل أرقامك الخاصة وشاهد النتيجة.">No promises. Put your own numbers in and see where it lands.</p>
       <div class="roi-panel">
         <div class="roi-grid">
           <div>
@@ -632,11 +708,11 @@
             </div>
           </div>
           <div class="roi-out">
-            <div class="roi-line"><span class="rl">Commission per single deal</span><span class="rv" id="o-single">—</span></div>
-            <div class="roi-line"><span class="rl">Estimated deals per month at your rate</span><span class="rv" id="o-deals">—</span></div>
-            <div class="roi-line"><span class="rl">Monthly commission at stake</span><span class="rv" id="o-monthly">—</span></div>
-            <div class="roi-line"><span class="rl">Implementation cost</span><span class="rv" style="color:var(--ink-muted); font-size:16px;">$9,594</span></div>
-            <p class="roi-note">Illustrative model based on the numbers you enter — not a forecast, guarantee, or historical result. Compare the commission on one deal against the implementation cost directly.</p>
+            <div class="roi-line"><span class="rl" data-i18n data-en="Commission per single deal" data-ar="العمولة لكل صفقة واحدة">Commission per single deal</span><span class="rv" id="o-single">—</span></div>
+            <div class="roi-line"><span class="rl" data-i18n data-en="Estimated deals per month at your rate" data-ar="الصفقات المقدّرة شهرياً وفق معدلك">Estimated deals per month at your rate</span><span class="rv" id="o-deals">—</span></div>
+            <div class="roi-line"><span class="rl" data-i18n data-en="Monthly commission at stake" data-ar="العمولة الشهرية المحتملة">Monthly commission at stake</span><span class="rv" id="o-monthly">—</span></div>
+            <div class="roi-line"><span class="rl" data-i18n data-en="Implementation cost" data-ar="تكلفة التنفيذ">Implementation cost</span><span class="rv" style="color:var(--ink-muted); font-size:16px;">$9,594</span></div>
+            <p class="roi-note" data-i18n data-en="Illustrative model based on the numbers you enter — not a forecast, guarantee, or historical result. Compare the commission on one deal against the implementation cost directly." data-ar="نموذج توضيحي مبني على الأرقام التي تُدخلها — وليس تنبؤاً أو ضماناً أو نتيجة تاريخية. قارن مباشرة عمولة صفقة واحدة بتكلفة التنفيذ.">Illustrative model based on the numbers you enter — not a forecast, guarantee, or historical result. Compare the commission on one deal against the implementation cost directly.</p>
           </div>
         </div>
       </div>
@@ -646,24 +722,24 @@
   <!-- LIVE POC PERSUASION -->
   <section class="section reveal" id="demo">
     <div class="wrap">
-      <p class="eyebrow">Proof, Not Slides</p>
-      <h2 class="h2">Don't take our word for it.<br>Watch your own lead move through the Engine.</h2>
-      <p class="lede" style="font-size:16px;">We run your workflow live. Not a deck.</p>
+      <p class="eyebrow" data-i18n data-en="Proof, Not Slides" data-ar="إثبات، لا شرائح عرض">Proof, Not Slides</p>
+      <h2 class="h2" data-i18n data-en="Don&#x27;t take our word for it.&lt;br&gt;Watch your own lead move through the Engine." data-ar="لا تكتفِ بكلامنا.&lt;br&gt;شاهد عميلك المحتمل وهو يمرّ عبر المحرك.">Don't take our word for it.<br>Watch your own lead move through the Engine.</h2>
+      <p class="lede" style="font-size:16px;" data-i18n data-en="We run your workflow live. Not a deck." data-ar="ننفّذ سير عملك مباشرة أمامك. لا عرضاً تقديمياً.">We run your workflow live. Not a deck.</p>
       <ol class="steps-list" style="list-style:none; margin:32px 0 0; padding:0; font-family:var(--mono); font-size:13px; color:var(--ink-muted);">
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Portal / email inquiry</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Parser</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Lead extraction</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Property matching</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Lead scoring</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Duplicate detection</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Broker routing</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">WhatsApp alert</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Notion record</li>
-        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);">Deal workflow</li>
-        <li style="padding:9px 0;">Commission visibility</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Portal / email inquiry" data-ar="استفسار من بوابة / بريد إلكتروني">Portal / email inquiry</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Parser" data-ar="محلّل البيانات">Parser</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Lead extraction" data-ar="استخراج بيانات العميل المحتمل">Lead extraction</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Property matching" data-ar="مطابقة العقار">Property matching</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Lead scoring" data-ar="تقييم العميل المحتمل">Lead scoring</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Duplicate detection" data-ar="كشف التكرار">Duplicate detection</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Broker routing" data-ar="توجيه الوسيط">Broker routing</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="WhatsApp alert" data-ar="تنبيه واتساب">WhatsApp alert</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Notion record" data-ar="سجل نوشن">Notion record</li>
+        <li style="padding:9px 0; border-bottom:1px solid var(--hairline-soft);" data-i18n data-en="Deal workflow" data-ar="سير عمل الصفقة">Deal workflow</li>
+        <li style="padding:9px 0;" data-i18n data-en="Commission visibility" data-ar="وضوح العمولة">Commission visibility</li>
       </ol>
       <div class="btn-row">
-        <a href="#poc" class="btn btn-gold" data-analytics="cta-demo-poc">Book The Live POC</a>
+        <a href="#poc" class="btn btn-gold" data-analytics="cta-demo-poc" data-i18n data-en="Book The Live POC" data-ar="احجز العرض الحي">Book The Live POC</a>
       </div>
     </div>
   </section>
@@ -671,9 +747,9 @@
   <!-- DEMO VIDEO -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">Preview</p>
-      <p class="video-hook">A AED 20M buyer just inquired.</p>
-      <p class="video-sub">How fast does your brokerage know?</p>
+      <p class="eyebrow" data-i18n data-en="Preview" data-ar="معاينة">Preview</p>
+      <p class="video-hook" data-i18n data-en="A AED 20M buyer just inquired." data-ar="مشترٍ بقيمة ٢٠ مليون درهم أرسل استفساراً للتو.">A AED 20M buyer just inquired.</p>
+      <p class="video-sub" data-i18n data-en="How fast does your brokerage know?" data-ar="كم يستغرق علم وكالتك بذلك؟">How fast does your brokerage know?</p>
       <div class="video-frame" style="margin-top:28px;">
         <!-- ============================================================
              LOOM DEMO EMBED
@@ -698,7 +774,7 @@
       </div>
       <div class="btn-row">
         <a href="#poc" class="btn btn-gold" data-analytics="cta-after-demo">Book The Live POC</a>
-        <a href="#proof" class="btn btn-ghost" data-analytics="cta-after-demo-proof">See The System Itself</a>
+        <a href="#proof" class="btn btn-ghost" data-analytics="cta-after-demo-proof" data-i18n data-en="See The System Itself" data-ar="شاهد النظام بنفسك">See The System Itself</a>
       </div>
     </div>
   </section>
@@ -706,27 +782,27 @@
   <!-- WHO FOR -->
   <section class="section reveal" id="who">
     <div class="wrap">
-      <p class="eyebrow">Qualification</p>
-      <h2 class="h2">This is not for every brokerage.</h2>
+      <p class="eyebrow" data-i18n data-en="Qualification" data-ar="التأهيل">Qualification</p>
+      <h2 class="h2" data-i18n data-en="This is not for every brokerage." data-ar="هذا النظام ليس لكل وكالة.">This is not for every brokerage.</h2>
       <div class="qual-grid">
         <div class="qual-col yes">
-          <span class="qual-label">Ideal</span>
+          <span class="qual-label" data-i18n data-en="Ideal" data-ar="مناسب لك إذا">Ideal</span>
           <ul>
-            <li>You receive meaningful inbound volume.</li>
-            <li>You pay for property portals.</li>
-            <li>You have multiple brokers.</li>
-            <li>You care about response time.</li>
-            <li>You need management visibility.</li>
-            <li>You believe missed inquiries have financial consequences.</li>
+            <li data-i18n data-en="You receive meaningful inbound volume." data-ar="تستقبل حجماً معتبراً من الاستفسارات.">You receive meaningful inbound volume.</li>
+            <li data-i18n data-en="You pay for property portals." data-ar="تدفع مقابل بوابات العقارات.">You pay for property portals.</li>
+            <li data-i18n data-en="You have multiple brokers." data-ar="لديك أكثر من وسيط.">You have multiple brokers.</li>
+            <li data-i18n data-en="You care about response time." data-ar="تهتم بوقت الاستجابة.">You care about response time.</li>
+            <li data-i18n data-en="You need management visibility." data-ar="تحتاج إلى رؤية إدارية واضحة.">You need management visibility.</li>
+            <li data-i18n data-en="You believe missed inquiries have financial consequences." data-ar="تؤمن بأن الاستفسارات المفقودة لها كلفة مالية حقيقية.">You believe missed inquiries have financial consequences.</li>
           </ul>
         </div>
         <div class="qual-col no">
-          <span class="qual-label">Not Ideal</span>
+          <span class="qual-label" data-i18n data-en="Not Ideal" data-ar="غير مناسب لك إذا">Not Ideal</span>
           <ul>
-            <li>Minimal inbound volume.</li>
-            <li>Very small teams.</li>
-            <li>No meaningful portal activity.</li>
-            <li>No willingness to measure broker response.</li>
+            <li data-i18n data-en="Minimal inbound volume." data-ar="حجم استفسارات محدود جداً.">Minimal inbound volume.</li>
+            <li data-i18n data-en="Very small teams." data-ar="فريق صغير جداً.">Very small teams.</li>
+            <li data-i18n data-en="No meaningful portal activity." data-ar="لا نشاط يُذكر على البوابات العقارية.">No meaningful portal activity.</li>
+            <li data-i18n data-en="No willingness to measure broker response." data-ar="لا رغبة في قياس استجابة الوسطاء.">No willingness to measure broker response.</li>
           </ul>
         </div>
       </div>
@@ -736,17 +812,17 @@
   <!-- DEPLOYMENT -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">Deployment</p>
-      <h2 class="h2">This is deployed. It is not downloaded.</h2>
+      <p class="eyebrow" data-i18n data-en="Deployment" data-ar="النشر">Deployment</p>
+      <h2 class="h2" data-i18n data-en="This is deployed. It is not downloaded." data-ar="هذا نظام يُنشَر، لا يُنزَّل.">This is deployed. It is not downloaded.</h2>
       <div class="deploy-grid">
-        <div class="deploy-step"><p class="dn">STEP 01</p><h3>Commercial approval</h3></div>
-        <div class="deploy-step"><p class="dn">STEP 02</p><h3>Onboarding brief</h3></div>
-        <div class="deploy-step"><p class="dn">STEP 03</p><h3>Portal &amp; inbox configuration</h3></div>
-        <div class="deploy-step"><p class="dn">STEP 04</p><h3>WhatsApp configuration</h3></div>
-        <div class="deploy-step"><p class="dn">STEP 05</p><h3>Broker &amp; database configuration</h3></div>
-        <div class="deploy-step"><p class="dn">STEP 06</p><h3>Testing</h3></div>
-        <div class="deploy-step"><p class="dn">STEP 07</p><h3>Live POC</h3></div>
-        <div class="deploy-step"><p class="dn">STEP 08</p><h3>Handover</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 01</p><h3 data-i18n data-en="Commercial approval" data-ar="الموافقة التجارية">Commercial approval</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 02</p><h3 data-i18n data-en="Onboarding brief" data-ar="ملخص التأهيل">Onboarding brief</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 03</p><h3 data-i18n data-en="Portal &amp;amp; inbox configuration" data-ar="إعداد البوابة وصندوق البريد">Portal &amp; inbox configuration</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 04</p><h3 data-i18n data-en="WhatsApp configuration" data-ar="إعداد واتساب">WhatsApp configuration</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 05</p><h3 data-i18n data-en="Broker &amp;amp; database configuration" data-ar="إعداد الوسطاء وقاعدة البيانات">Broker &amp; database configuration</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 06</p><h3 data-i18n data-en="Testing" data-ar="الاختبار">Testing</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 07</p><h3 data-i18n data-en="Live POC" data-ar="العرض الحي">Live POC</h3></div>
+        <div class="deploy-step"><p class="dn">STEP 08</p><h3 data-i18n data-en="Handover" data-ar="التسليم">Handover</h3></div>
       </div>
     </div>
   </section>
@@ -755,19 +831,19 @@
   <section class="section reveal" id="operator">
     <div class="wrap split">
       <div>
-        <p class="eyebrow">Who Builds It</p>
-        <h2 class="h2">You are not buying software from a company.<br>You are engaging the person who builds it.</h2>
+        <p class="eyebrow" data-i18n data-en="Who Builds It" data-ar="من يبنيه">Who Builds It</p>
+        <h2 class="h2" data-i18n data-en="You are not buying software from a company.&lt;br&gt;You are engaging the person who builds it." data-ar="أنت لا تشتري برمجية من شركة.&lt;br&gt;بل تتعامل مباشرة مع الشخص الذي يبنيها.">You are not buying software from a company.<br>You are engaging the person who builds it.</h2>
       </div>
       <div>
-        <p class="lede" style="font-size:17px;">Revenue Recovery Engine™ is designed, deployed and maintained by PRT Circle directly. There is no support ticket queue and no offshore implementation team.</p>
-        <p class="lede" style="font-size:17px;">The same person who architected the engine configures your portal formats, tests your first live lead, and answers when something breaks at 11pm on a Thursday.</p>
+        <p class="lede" style="font-size:17px;" data-i18n data-en="Revenue Recovery Engine™ is designed, deployed and maintained by PRT Circle directly. There is no support ticket queue and no offshore implementation team." data-ar="محرك استرداد الإيرادات™ مصمَّم ومنشور ومُدار من قِبل بي آر تي سيركل مباشرة. لا توجد قائمة انتظار للدعم الفني، ولا فريق تنفيذ خارجي.">Revenue Recovery Engine™ is designed, deployed and maintained by PRT Circle directly. There is no support ticket queue and no offshore implementation team.</p>
+        <p class="lede" style="font-size:17px;" data-i18n data-en="The same person who architected the engine configures your portal formats, tests your first live lead, and answers when something breaks at 11pm on a Thursday." data-ar="الشخص نفسه الذي صمّم المحرك هو من يُعدّ صيغ بوابتك، ويختبر أول عميل محتمل فعلي لديك، ويجيبك عندما يتعطّل شيء ما الساعة الحادية عشرة مساء يوم خميس.">The same person who architected the engine configures your portal formats, tests your first live lead, and answers when something breaks at 11pm on a Thursday.</p>
         <ul class="op-list">
-          <li><span class="ok">Direct line</span> No account managers between you and the build.</li>
-          <li><span class="ok">Every reply within one business day</span> Applications reviewed personally.</li>
-          <li><span class="ok">Configured, not templated</span> Built around your portals and your brokers.</li>
+          <li><span class="ok" data-i18n data-en="Direct line" data-ar="تواصل مباشر">Direct line</span> No account managers between you and the build.</li>
+          <li><span class="ok" data-i18n data-en="Every reply within one business day" data-ar="رد خلال يوم عمل واحد">Every reply within one business day</span> Applications reviewed personally.</li>
+          <li><span class="ok" data-i18n data-en="Configured, not templated" data-ar="مُعدّ خصيصاً، لا قالباً جاهزاً">Configured, not templated</span> Built around your portals and your brokers.</li>
         </ul>
         <p class="contact-alt" style="text-align:left; margin-top:24px;">Reach the operator directly: <a href="mailto:admin@prtcircle.com">admin@prtcircle.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/n-qwabe-794632288" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-        <p class="op-loc">Operating from Johannesburg, Gauteng, South Africa &nbsp;·&nbsp; Deploying into the UAE &amp; Qatar</p>
+        <p class="op-loc" data-i18n data-en="Operating from Johannesburg, Gauteng, South Africa &amp;nbsp;·&amp;nbsp; Deploying into the UAE &amp;amp; Qatar" data-ar="مقرّ العمل في جوهانسبرغ، خوتنغ، جنوب أفريقيا &amp;nbsp;·&amp;nbsp; ننشر في الإمارات وقطر">Operating from Johannesburg, Gauteng, South Africa &nbsp;·&nbsp; Deploying into the UAE &amp; Qatar</p>
       </div>
     </div>
   </section>
@@ -775,17 +851,17 @@
   <!-- PRICING -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">The Engagement</p>
-      <h2 class="h2">Priced against one recovered deal.</h2>
-      <p class="lede" style="font-size:16px;">On a AED 25M villa at 5%, a single recovered transaction is AED 1,250,000 in commission. That is the number this is measured against — not a software budget.</p>
+      <p class="eyebrow" data-i18n data-en="The Engagement" data-ar="التعاقد">The Engagement</p>
+      <h2 class="h2" data-i18n data-en="Priced against one recovered deal." data-ar="السعر مقارَن بصفقة واحدة مستردة.">Priced against one recovered deal.</h2>
+      <p class="lede" style="font-size:16px;" data-i18n data-en="On a AED 25M villa at 5%, a single recovered transaction is AED 1,250,000 in commission. That is the number this is measured against — not a software budget." data-ar="على فيلا بقيمة ٢٥ مليون درهم وبنسبة عمولة ٥٪، تعني صفقة واحدة مستردة عمولة قدرها ١,٢٥٠,٠٠٠ درهم. هذا هو الرقم المرجعي هنا — لا ميزانية برمجية.">On a AED 25M villa at 5%, a single recovered transaction is AED 1,250,000 in commission. That is the number this is measured against — not a software budget.</p>
       <div class="price-wrap">
-        <div class="price-card"><p class="plabel">Implementation</p><p class="pval">$9,594</p><p class="punit">one-time</p></div>
-        <div class="price-card"><p class="plabel">Managed Retainer</p><p class="pval">$2,799</p><p class="punit">per month</p></div>
+        <div class="price-card"><p class="plabel" data-i18n data-en="Implementation" data-ar="التنفيذ">Implementation</p><p class="pval">$9,594</p><p class="punit" data-i18n data-en="one-time" data-ar="دفعة واحدة">one-time</p></div>
+        <div class="price-card"><p class="plabel" data-i18n data-en="Managed Retainer" data-ar="اشتراك الإدارة المستمرة">Managed Retainer</p><p class="pval">$2,799</p><p class="punit" data-i18n data-en="per month" data-ar="شهرياً">per month</p></div>
       </div>
-      <p class="price-desc">Every deployment is configured, tested and handed over personally — portal formats, broker routing, WhatsApp templates and pipeline logic are built around your operation, not toggled on from a template. <b>That work sets a hard ceiling on how many brokerages can be onboarded at once.</b></p>
+      <p class="price-desc" data-i18n data-en="Every deployment is configured, tested and handed over personally — portal formats, broker routing, WhatsApp templates and pipeline logic are built around your operation, not toggled on from a template. &lt;b&gt;That work sets a hard ceiling on how many brokerages can be onboarded at once.&lt;/b&gt;" data-ar="كل عملية نشر تُعدّ وتُختبر وتُسلَّم شخصياً — صيغ البوابات وتوجيه الوسطاء وقوالب واتساب ومنطق مسار الصفقات، جميعها تُبنى حول عملياتك الفعلية، لا تُفعَّل من قالب جاهز. &lt;b&gt;هذا العمل بحد ذاته يضع سقفاً صارماً لعدد الوكالات التي يمكن استقبالها في وقت واحد.&lt;/b&gt;">Every deployment is configured, tested and handed over personally — portal formats, broker routing, WhatsApp templates and pipeline logic are built around your operation, not toggled on from a template. <b>That work sets a hard ceiling on how many brokerages can be onboarded at once.</b></p>
       <div class="capacity">
         <span class="cap-dot"></span>
-        <span class="cap-text"><b>Current intake:</b> a limited number of deployment slots per month. When they are taken, the next available start date moves out.</span>
+        <span class="cap-text" data-i18n data-en="&lt;b&gt;Current intake:&lt;/b&gt; a limited number of deployment slots per month. When they are taken, the next available start date moves out." data-ar="&lt;b&gt;الاستيعاب الحالي:&lt;/b&gt; عدد محدود من مواعيد النشر شهرياً. وعندما تُحجَز جميعها، يتأجل أقرب موعد بدء متاح."><b>Current intake:</b> a limited number of deployment slots per month. When they are taken, the next available start date moves out.</span>
       </div>
     </div>
   </section>
@@ -793,28 +869,28 @@
   <!-- OBJECTIONS -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">Direct Answers</p>
-      <h2 class="h2">The questions you're already asking.</h2>
+      <p class="eyebrow" data-i18n data-en="Direct Answers" data-ar="إجابات مباشرة">Direct Answers</p>
+      <h2 class="h2" data-i18n data-en="The questions you&#x27;re already asking." data-ar="الأسئلة التي تطرحها على نفسك بالفعل.">The questions you're already asking.</h2>
       <div class="faq-list">
         <details class="faq-item">
-          <summary>We already have a CRM.</summary>
-          <p>Good. The Engine isn't positioned as a CRM replacement. It's designed to improve what happens before and around the CRM workflow.</p>
+          <summary data-i18n data-en="We already have a CRM." data-ar="لدينا بالفعل نظام إدارة علاقات عملاء.">We already have a CRM.</summary>
+          <p data-i18n data-en="Good. The Engine isn&#x27;t positioned as a CRM replacement. It&#x27;s designed to improve what happens before and around the CRM workflow." data-ar="جيد. المحرك لا يهدف لاستبدال نظامك — بل لتحسين ما يحدث قبل وحول سير عمل ذلك النظام.">Good. The Engine isn't positioned as a CRM replacement. It's designed to improve what happens before and around the CRM workflow.</p>
         </details>
         <details class="faq-item">
-          <summary>We already use automation.</summary>
-          <p>Then the question isn't whether automation exists. It's whether valuable inquiries reliably become broker action.</p>
+          <summary data-i18n data-en="We already use automation." data-ar="لدينا بالفعل أتمتة.">We already use automation.</summary>
+          <p data-i18n data-en="Then the question isn&#x27;t whether automation exists. It&#x27;s whether valuable inquiries reliably become broker action." data-ar="إذن السؤال ليس عن وجود الأتمتة، بل عن مدى ضمان تحوّل الاستفسارات القيّمة إلى إجراء فعلي من الوسيط.">Then the question isn't whether automation exists. It's whether valuable inquiries reliably become broker action.</p>
         </details>
         <details class="faq-item">
-          <summary>Our brokers already use WhatsApp.</summary>
-          <p>Exactly. That's why WhatsApp is part of the operating workflow, not a separate tool to adopt.</p>
+          <summary data-i18n data-en="Our brokers already use WhatsApp." data-ar="وسطاؤنا يستخدمون واتساب بالفعل.">Our brokers already use WhatsApp.</summary>
+          <p data-i18n data-en="Exactly. That&#x27;s why WhatsApp is part of the operating workflow, not a separate tool to adopt." data-ar="بالضبط. ولهذا فإن واتساب جزء من سير العمل نفسه، لا أداة إضافية عليك تبنّيها.">Exactly. That's why WhatsApp is part of the operating workflow, not a separate tool to adopt.</p>
         </details>
         <details class="faq-item">
-          <summary>Can you prove it?</summary>
-          <p>Yes. Use your own inquiry. Watch the POC.</p>
+          <summary data-i18n data-en="Can you prove it?" data-ar="هل يمكنكم إثبات ذلك؟">Can you prove it?</summary>
+          <p data-i18n data-en="Yes. Use your own inquiry. Watch the POC." data-ar="نعم. استخدم استفسارك الخاص. وشاهد العرض الحي.">Yes. Use your own inquiry. Watch the POC.</p>
         </details>
         <details class="faq-item">
-          <summary>What happens if the system fails?</summary>
-          <p>Failures are detected, logged, retried, and escalated. We don't promise zero failures — we explain exactly how one is caught and recovered.</p>
+          <summary data-i18n data-en="What happens if the system fails?" data-ar="ماذا يحدث إذا تعطّل النظام؟">What happens if the system fails?</summary>
+          <p data-i18n data-en="Failures are detected, logged, retried, and escalated. We don&#x27;t promise zero failures — we explain exactly how one is caught and recovered." data-ar="يتم رصد الأعطال وتسجيلها وإعادة المحاولة وتصعيدها. نحن لا نعِد بصفر أعطال — بل نوضّح بالضبط كيف يُكتشف كل عطل ويُعالَج.">Failures are detected, logged, retried, and escalated. We don't promise zero failures — we explain exactly how one is caught and recovered.</p>
         </details>
       </div>
     </div>
@@ -823,14 +899,14 @@
   <!-- SECURITY -->
   <section class="section reveal">
     <div class="wrap">
-      <p class="eyebrow">Security &amp; Data</p>
-      <h2 class="h2">Kept simple, kept honest.</h2>
+      <p class="eyebrow" data-i18n data-en="Security &amp;amp; Data" data-ar="الأمان والبيانات">Security &amp; Data</p>
+      <h2 class="h2" data-i18n data-en="Kept simple, kept honest." data-ar="ببساطة ووضوح، دون تعقيد.">Kept simple, kept honest.</h2>
       <ul class="sec-list">
-        <li><span class="sk">Data ownership</span><span class="sv">Your brokerage owns its data. It lives inside your own Notion workspace, not a shared multi-tenant database.</span></li>
-        <li><span class="sk">Processing</span><span class="sv">Workflow automation runs through your own connected Make.com account.</span></li>
-        <li><span class="sk">Connected systems</span><span class="sv">Notion, Make, WhatsApp Business Cloud API, Apollo, and your property portals.</span></li>
-        <li><span class="sk">Access</span><span class="sv">Limited to your team and the deployment engineer during setup and support.</span></li>
-        <li><span class="sk">Certifications</span><span class="sv">None claimed beyond what the underlying platforms (Notion, Make, Meta) themselves hold.</span></li>
+        <li><span class="sk" data-i18n data-en="Data ownership" data-ar="ملكية البيانات">Data ownership</span><span class="sv" data-i18n data-en="Your brokerage owns its data. It lives inside your own Notion workspace, not a shared multi-tenant database." data-ar="وكالتك تملك بياناتها بالكامل. تقيم داخل مساحة عمل نوشن الخاصة بك، لا في قاعدة بيانات مشتركة.">Your brokerage owns its data. It lives inside your own Notion workspace, not a shared multi-tenant database.</span></li>
+        <li><span class="sk" data-i18n data-en="Processing" data-ar="المعالجة">Processing</span><span class="sv" data-i18n data-en="Workflow automation runs through your own connected Make.com account." data-ar="تعمل أتمتة سير العمل عبر حساب Make.com الخاص بك المتصل.">Workflow automation runs through your own connected Make.com account.</span></li>
+        <li><span class="sk" data-i18n data-en="Connected systems" data-ar="الأنظمة المتصلة">Connected systems</span><span class="sv" data-i18n data-en="Notion, Make, WhatsApp Business Cloud API, Apollo, and your property portals." data-ar="نوشن، ميك، واجهة واتساب بيزنس السحابية، أبولو، وبوابات العقارات الخاصة بك.">Notion, Make, WhatsApp Business Cloud API, Apollo, and your property portals.</span></li>
+        <li><span class="sk" data-i18n data-en="Access" data-ar="الصلاحيات">Access</span><span class="sv" data-i18n data-en="Limited to your team and the deployment engineer during setup and support." data-ar="مقتصرة على فريقك ومهندس النشر أثناء الإعداد والدعم فقط.">Limited to your team and the deployment engineer during setup and support.</span></li>
+        <li><span class="sk" data-i18n data-en="Certifications" data-ar="الشهادات">Certifications</span><span class="sv" data-i18n data-en="None claimed beyond what the underlying platforms (Notion, Make, Meta) themselves hold." data-ar="لا ادعاءات تتجاوز ما تحمله المنصات الأساسية نفسها (نوشن، ميك، ميتا).">None claimed beyond what the underlying platforms (Notion, Make, Meta) themselves hold.</span></li>
       </ul>
     </div>
   </section>
@@ -838,28 +914,28 @@
   <!-- POC FORM -->
   <section class="section reveal" id="poc">
     <div class="wrap">
-      <p class="eyebrow">Apply For Deployment</p>
-      <h2 class="h2">Bring one real inquiry. Watch what happens.</h2>
-      <p class="lede" style="font-size:16px;">This is an application, not a checkout. Every request is reviewed against fit before a POC is scheduled — brokerages without meaningful inbound volume are declined, because the engine has nothing to recover.</p>
+      <p class="eyebrow" data-i18n data-en="Apply For Deployment" data-ar="تقدّم لطلب النشر">Apply For Deployment</p>
+      <h2 class="h2" data-i18n data-en="Bring one real inquiry. Watch what happens." data-ar="أحضر استفساراً حقيقياً واحداً. وشاهد ما يحدث.">Bring one real inquiry. Watch what happens.</h2>
+      <p class="lede" style="font-size:16px;" data-i18n data-en="This is an application, not a checkout. Every request is reviewed against fit before a POC is scheduled — brokerages without meaningful inbound volume are declined, because the engine has nothing to recover." data-ar="هذا طلب تقديم، لا عملية شراء. تُراجَع كل طلبات المناسَبة قبل جدولة العرض الحي — والوكالات ذات الحجم المحدود تُرفَض، لأن المحرك لن يجد ما يستردّه.">This is an application, not a checkout. Every request is reviewed against fit before a POC is scheduled — brokerages without meaningful inbound volume are declined, because the engine has nothing to recover.</p>
       <div class="poc-panel">
         <form class="poc-form" id="pocForm">
           <div class="form-grid">
-            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
-            <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" required autocomplete="organization"></div>
-            <div class="field"><label for="f-role">Role</label><input id="f-role" name="role" type="text" required></div>
-            <div class="field"><label for="f-whatsapp">WhatsApp</label><input id="f-whatsapp" name="whatsapp" type="tel" placeholder="+971" required></div>
-            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
-            <div class="field"><label for="f-brokers">Number Of Brokers</label><input id="f-brokers" name="brokers" type="text" placeholder="e.g. 12"></div>
-            <div class="field"><label for="f-sources">Main Lead Sources</label><input id="f-sources" name="sources" type="text" placeholder="Property Finder, Bayut..."></div>
-            <div class="field"><label for="f-volume">Approx. Monthly Inbound Volume</label><input id="f-volume" name="volume" type="text" placeholder="e.g. 40–60"></div>
+            <div class="field"><label for="f-name" data-i18n data-en="Name" data-ar="الاسم">Name</label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="field"><label for="f-company" data-i18n data-en="Company" data-ar="الشركة">Company</label><input id="f-company" name="company" type="text" required autocomplete="organization"></div>
+            <div class="field"><label for="f-role" data-i18n data-en="Role" data-ar="المسمى الوظيفي">Role</label><input id="f-role" name="role" type="text" required></div>
+            <div class="field"><label for="f-whatsapp" data-i18n data-en="WhatsApp" data-ar="رقم واتساب">WhatsApp</label><input id="f-whatsapp" name="whatsapp" type="tel" placeholder="+971" required></div>
+            <div class="field"><label for="f-email" data-i18n data-en="Email" data-ar="البريد الإلكتروني">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+            <div class="field"><label for="f-brokers" data-i18n data-en="Number Of Brokers" data-ar="عدد الوسطاء">Number Of Brokers</label><input id="f-brokers" name="brokers" type="text" placeholder="e.g. 12"></div>
+            <div class="field"><label for="f-sources" data-i18n data-en="Main Lead Sources" data-ar="مصادر العملاء الرئيسية">Main Lead Sources</label><input id="f-sources" name="sources" type="text" placeholder="Property Finder, Bayut..."></div>
+            <div class="field"><label for="f-volume" data-i18n data-en="Approx. Monthly Inbound Volume" data-ar="الحجم الشهري التقريبي للاستفسارات">Approx. Monthly Inbound Volume</label><input id="f-volume" name="volume" type="text" placeholder="e.g. 40–60"></div>
             <div class="hp-field" aria-hidden="true">
               <label for="hp-company-url">Company URL</label>
               <input id="hp-company-url" name="hp_company_url" type="text" tabindex="-1" autocomplete="off">
             </div>
-            <div class="form-error" id="formError" role="alert">Something went wrong sending your request. Please try again, or email us directly.</div>
+            <div class="form-error" id="formError" role="alert" data-i18n data-en="Something went wrong sending your request. Please try again, or email us directly." data-ar="حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى، أو مراسلتنا مباشرة عبر البريد الإلكتروني.">Something went wrong sending your request. Please try again, or email us directly.</div>
             <div class="form-submit">
-              <button type="submit" class="btn btn-gold" id="submitBtn" data-analytics="cta-form-submit">Book The Live POC</button>
-              <span class="form-note">We review every request before scheduling.</span>
+              <button type="submit" class="btn btn-gold" id="submitBtn" data-analytics="cta-form-submit" data-i18n data-en="Book The Live POC" data-ar="احجز العرض الحي">Book The Live POC</button>
+              <span class="form-note" data-i18n data-en="We review every request before scheduling." data-ar="نراجع كل طلب قبل تحديد الموعد.">We review every request before scheduling.</span>
             </div>
           </div>
         </form>
@@ -867,12 +943,12 @@
 
         <div class="success-state" id="successState">
           <div class="success-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3>Your POC request is received.</h3>
+          <h3 data-i18n data-en="Your POC request is received." data-ar="تم استلام طلب العرض الحي الخاص بك.">Your POC request is received.</h3>
           <ol>
-            <li>We review your brokerage profile.</li>
-            <li>We confirm whether the Engine fits your operation.</li>
-            <li>We arrange the POC.</li>
-            <li>You see the workflow using your own scenario.</li>
+            <li data-i18n data-en="We review your brokerage profile." data-ar="نراجع ملف وكالتك.">We review your brokerage profile.</li>
+            <li data-i18n data-en="We confirm whether the Engine fits your operation." data-ar="نتأكد من ملاءمة المحرك لعملياتك.">We confirm whether the Engine fits your operation.</li>
+            <li data-i18n data-en="We arrange the POC." data-ar="ننظّم العرض الحي.">We arrange the POC.</li>
+            <li data-i18n data-en="You see the workflow using your own scenario." data-ar="تشاهد سير العمل باستخدام سيناريو خاص بك.">You see the workflow using your own scenario.</li>
           </ol>
         </div>
       </div>
@@ -882,20 +958,20 @@
   <!-- FAQ -->
   <section class="section reveal" id="faq">
     <div class="wrap">
-      <p class="eyebrow">FAQ</p>
-      <h2 class="h2">A few things worth clarifying.</h2>
+      <p class="eyebrow" data-i18n data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</p>
+      <h2 class="h2" data-i18n data-en="A few things worth clarifying." data-ar="بعض النقاط التي تستحق التوضيح.">A few things worth clarifying.</h2>
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Does it work with Property Finder, Bayut and Dubizzle?</summary>
-          <p>The system is configured around the inquiry format available from your portal and inbox workflow, including all three.</p>
+          <summary data-i18n data-en="Does it work with Property Finder, Bayut and Dubizzle?" data-ar="هل يعمل مع Property Finder وBayut وDubizzle؟">Does it work with Property Finder, Bayut and Dubizzle?</summary>
+          <p data-i18n data-en="The system is configured around the inquiry format available from your portal and inbox workflow, including all three." data-ar="يُعدّ النظام وفق صيغة الاستفسارات المتاحة من بوابتك وسير عمل بريدك، بما يشمل الثلاثة جميعاً.">The system is configured around the inquiry format available from your portal and inbox workflow, including all three.</p>
         </details>
         <details class="faq-item">
-          <summary>What happens if an inquiry format changes?</summary>
-          <p>Parsing and extraction rules are tested and maintained against your actual inbound formats.</p>
+          <summary data-i18n data-en="What happens if an inquiry format changes?" data-ar="ماذا يحدث إذا تغيّرت صيغة الاستفسار؟">What happens if an inquiry format changes?</summary>
+          <p data-i18n data-en="Parsing and extraction rules are tested and maintained against your actual inbound formats." data-ar="تُختبَر قواعد التحليل والاستخراج وتُصان باستمرار وفق الصيغ الفعلية الواردة لديك.">Parsing and extraction rules are tested and maintained against your actual inbound formats.</p>
         </details>
         <details class="faq-item">
-          <summary>Does it automatically contact buyers?</summary>
-          <p>No. The system alerts the responsible broker. Human contact stays entirely under your brokerage's control.</p>
+          <summary data-i18n data-en="Does it automatically contact buyers?" data-ar="هل يتواصل مع المشترين تلقائياً؟">Does it automatically contact buyers?</summary>
+          <p data-i18n data-en="No. The system alerts the responsible broker. Human contact stays entirely under your brokerage&#x27;s control." data-ar="لا. ينبّه النظام الوسيط المسؤول فقط. ويبقى التواصل البشري تحت سيطرة وكالتك الكاملة.">No. The system alerts the responsible broker. Human contact stays entirely under your brokerage's control.</p>
         </details>
       </div>
     </div>
@@ -904,14 +980,14 @@
   <!-- FINAL CLOSE -->
   <section class="final-cta reveal">
     <div class="wrap">
-      <p class="eyebrow" style="text-align:center;">Before You Go</p>
-      <h2>The question isn't whether you receive enough leads.<br>It's how many of them your brokerage actually recovers.</h2>
+      <p class="eyebrow" style="text-align:center;" data-i18n data-en="Before You Go" data-ar="قبل أن تغادر">Before You Go</p>
+      <h2 data-i18n data-en="The question isn&#x27;t whether you receive enough leads.&lt;br&gt;It&#x27;s how many of them your brokerage actually recovers." data-ar="السؤال ليس عن كفاية العملاء المحتملين الذين تستقبلهم.&lt;br&gt;بل عن عدد الذين تسترد وكالتك قيمتهم فعلياً.">The question isn't whether you receive enough leads.<br>It's how many of them your brokerage actually recovers.</h2>
       <p class="facts">You already spend money generating demand.<br>You already have brokers.<br>You already have properties.<br>You already have WhatsApp.</p>
       <div class="btn-row">
-        <a href="#poc" class="btn btn-gold" data-analytics="cta-final-poc">Book The Live POC</a>
-        <a href="#poc" class="btn btn-ghost" data-analytics="cta-final-apply">Apply For Deployment</a>
+        <a href="#poc" class="btn btn-gold" data-analytics="cta-final-poc" data-i18n data-en="Book The Live POC" data-ar="احجز العرض الحي">Book The Live POC</a>
+        <a href="#poc" class="btn btn-ghost" data-analytics="cta-final-apply" data-i18n data-en="Apply For Deployment" data-ar="تقدّم لطلب النشر">Apply For Deployment</a>
       </div>
-      <p class="final-line">Bring one real inquiry. Watch what happens.</p>
+      <p class="final-line" data-i18n data-en="Bring one real inquiry. Watch what happens." data-ar="أحضر استفساراً حقيقياً واحداً. وشاهد ما يحدث.">Bring one real inquiry. Watch what happens.</p>
     </div>
   </section>
 
@@ -954,6 +1030,45 @@
 </a>
 
 <script>
+  // Language toggle — EN / AR with RTL layout switch
+  (function(){
+    var STORAGE_KEY = 'prt-circle-lang';
+    var toggleBtn = document.getElementById('langToggle');
+    var htmlEl = document.documentElement;
+    var i18nEls = document.querySelectorAll('[data-i18n]');
+
+    function decodeEntities(str){
+      var ta = document.createElement('textarea');
+      ta.innerHTML = str;
+      return ta.value;
+    }
+
+    function applyLang(lang){
+      var isAr = lang === 'ar';
+      htmlEl.setAttribute('lang', isAr ? 'ar' : 'en');
+      htmlEl.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      i18nEls.forEach(function(el){
+        var raw = isAr ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        if(raw !== null){ el.innerHTML = raw; }
+      });
+      if(toggleBtn){
+        toggleBtn.setAttribute('aria-pressed', isAr ? 'true' : 'false');
+      }
+      try{ localStorage.setItem(STORAGE_KEY, lang); }catch(e){}
+    }
+
+    if(toggleBtn){
+      toggleBtn.addEventListener('click', function(){
+        var current = htmlEl.getAttribute('dir') === 'rtl' ? 'ar' : 'en';
+        applyLang(current === 'ar' ? 'en' : 'ar');
+      });
+    }
+
+    var saved = null;
+    try{ saved = localStorage.getItem(STORAGE_KEY); }catch(e){}
+    if(saved === 'ar'){ applyLang('ar'); }
+  })();
+
   // scroll reveal
   var revealEls = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
@@ -1056,6 +1171,11 @@
     calc();
   })();
 </script>
+
+<div class="sticky-mobile-cta" id="stickyMobileCta">
+  <span class="smc-text"><b data-i18n data-en="Apply for deployment" data-ar="تقدّم لطلب النشر">Apply for deployment</b>By application only</span>
+  <a href="#poc" class="btn btn-gold" data-analytics="cta-sticky-mobile">Apply Now</a>
+</div>
 
 </body>
 </html>
