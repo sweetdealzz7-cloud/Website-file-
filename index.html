@@ -5,146 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PRT CIRCLE | Automation workflows built and engineered in Johannesburg</title>
 <meta name="description" content="PRT CIRCLE builds automation workflows for small businesses and accounting practices. Xero, HubSpot, Google Sheets, Airtable, Make and AI steps with human review. Based in Johannesburg.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prtcircle.com/">
+<meta property="og:title" content="PRT CIRCLE | Automation workflows, built and tested">
+<meta property="og:description" content="We build workflows that take repetitive work off your team. Xero, HubSpot, Sheets, Airtable and AI with human review. Johannesburg.">
+<meta property="og:image" content="https://prtcircle.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#16181d; --ink2:#4a4f59; --muted:#7a808b;
-  --bg:#f7f6f2; --card:#ffffff; --line:#e4e2dc;
-  --slate:#8b9bb0; --slate-d:#3d4a5c; --gold:#b8964a;
-  --wa:#1f9d55;
-  --r:14px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px}
-a{color:inherit}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-d)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .15s,background .15s}
-.btn:hover{transform:translateY(-1px)}
-.btn-wa{background:var(--wa);color:#fff}
-.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
-.btn svg{width:18px;height:18px}
-
-/* nav */
-nav{position:sticky;top:0;z-index:20;background:rgba(247,246,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:.18em;font-size:14px}
-.brand img{width:38px;height:38px;border-radius:50%}
-.links{display:flex;gap:26px;font-size:14px}
-.links a{text-decoration:none;color:var(--ink2)}
-.links a:hover{color:var(--ink)}
-nav .btn{padding:9px 16px;font-size:14px}
-@media(max-width:820px){.links{display:none}}
-
-/* hero */
-.hero{padding:70px 0 60px}
-.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(36px,5.2vw,58px);margin:14px 0 18px}
-.hero p.lead{font-size:18px;color:var(--ink2);max-width:560px}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.tools{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
-.tools span{font-size:13px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink2)}
-.intro{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:0 20px 50px -30px rgba(22,24,29,.35)}
-.intro .vid{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#111}
-.intro .cap{font-size:13px;color:var(--muted);padding:10px 4px 2px;text-align:center}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.intro{max-width:280px;margin:0 auto}}
-
-/* lite youtube */
-.yt{position:absolute;inset:0;cursor:pointer;background:#111 center/cover no-repeat;border:0;width:100%;height:100%}
-.yt::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.45))}
-.yt .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;z-index:2;box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.yt .play::before{content:"";border-left:20px solid var(--ink);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
-.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-
-/* sections */
-section{padding:84px 0}
-.head{max-width:700px;margin-bottom:38px}
-.head h2{font-size:clamp(28px,3.6vw,40px);margin:10px 0 12px}
-.head p{color:var(--ink2);font-size:17px}
-.honest{display:block;background:#eef1f5;border:1px solid #d9e0e9;border-radius:var(--r);padding:14px 16px;font-size:14px;color:var(--slate-d);margin-bottom:30px}
-.honest b{color:var(--ink)}
-
-/* work */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
-.card .vid{position:relative;aspect-ratio:16/9;background:#111}
-.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card h3{font-size:21px}
-.tag{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px}
-.tag.live{background:#e5f4ea;color:#1c6b3c}
-.tag.sim{background:#fbf1de;color:#8a5a12}
-.card p{color:var(--ink2);font-size:15px}
-.card ul{list-style:none;display:grid;gap:6px;font-size:14px;color:var(--ink2)}
-.card li{padding-left:18px;position:relative}
-.card li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--gold)}
-.stack{margin-top:auto;padding-top:8px;font-size:13px;color:var(--muted)}
-
-/* services */
-.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:960px){.svc{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.svc{grid-template-columns:1fr}}
-.svc > div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
-.svc .n{font-family:Fraunces,Georgia,serif;font-size:15px;color:var(--gold);margin-bottom:10px}
-.svc h3{font-size:19px;margin-bottom:8px}
-.svc p{font-size:14.5px;color:var(--ink2)}
-
-/* steps */
-.dark{background:var(--ink);color:#f3f2ee}
-.dark .eyebrow{color:var(--slate)}
-.dark .head p{color:#c9cbd1}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #343842}
-@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.steps{grid-template-columns:1fr}}
-.steps div{padding:26px 24px 10px 0}
-.steps .k{font-family:Fraunces,Georgia,serif;font-size:42px;color:var(--gold);line-height:1}
-.steps h3{font-size:19px;margin:12px 0 6px}
-.steps p{font-size:14.5px;color:#c9cbd1}
-
-/* pricing */
-.price{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:900px){.price{grid-template-columns:1fr}}
-.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:12px}
-.plan.main{border:2px solid var(--ink)}
-.plan h3{font-size:20px}
-.amt{font-family:Fraunces,Georgia,serif;font-size:38px;font-weight:600}
-.amt small{font-family:Inter,sans-serif;font-size:14px;color:var(--muted);font-weight:500}
-.plan ul{list-style:none;display:grid;gap:8px;font-size:14.5px;color:var(--ink2)}
-.plan li{padding-left:22px;position:relative}
-.plan li::before{content:"✓";position:absolute;left:0;color:var(--wa);font-weight:700}
-.plan .btn{margin-top:auto;justify-content:center}
-
-/* about */
-.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
-@media(max-width:820px){.about{grid-template-columns:1fr}}
-.about .who{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;gap:16px;align-items:center}
-.about .who img{width:72px;height:72px;border-radius:50%}
-.about .who b{display:block;font-size:17px}
-.about .who span{font-size:14px;color:var(--muted)}
-.about p{color:var(--ink2);margin-bottom:14px;font-size:16.5px}
-.profiles{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-
-/* contact */
-.contact{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:48px;text-align:center}
-.contact h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:12px}
-.contact p{color:var(--ink2);max-width:560px;margin:0 auto 26px;font-size:17px}
-.contact .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.contact .small{margin-top:20px;font-size:14px;color:var(--muted)}
-@media(max-width:560px){.contact{padding:32px 20px}}
-
-footer{padding:34px 0 90px;font-size:13px;color:var(--muted)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
-
-/* floating whatsapp */
-.fab{position:fixed;right:20px;bottom:20px;z-index:30;display:flex;align-items:center;gap:10px;background:var(--wa);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px 13px 14px;border-radius:999px;box-shadow:0 12px 30px -8px rgba(31,157,85,.6)}
-.fab svg{width:24px;height:24px}
-@media(max-width:520px){.fab span{display:none}.fab{padding:14px}}
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
@@ -152,6 +25,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   <div class="wrap">
     <a class="brand" href="#top"><img src="logo-mark.png" alt="PRT CIRCLE logo">PRT CIRCLE</a>
     <div class="links">
+      <a href="xero.html">For Xero practices</a>
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
@@ -318,11 +192,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="head">
       <div class="eyebrow">Pricing</div>
       <h2>Clear prices. Low risk to start.</h2>
+      <p>We are a young company, so our first five clients get a founding price in exchange for honest feedback. Standard single-task builds start from R6,500.</p>
     </div>
     <div class="price">
       <div class="plan main">
+        <span class="ribbon">Founding-client price</span>
         <h3>Single task automation</h3>
-        <div class="amt">R3,500 <small>once, from</small></div>
+        <div class="amt">R3,500 <small>once, first 5 clients</small></div>
         <ul>
           <li>One repetitive task, one workflow</li>
           <li>50% to start, 50% when it works on your real file</li>
@@ -355,6 +231,37 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       </div>
     </div>
     <p style="margin-top:18px;font-size:13px;color:var(--muted)">Third-party tool costs such as Make or API usage are separate and always shown before you sign. Many small workflows fit on free plans.</p>
+  </div>
+</section>
+
+<section id="data" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Your data</div>
+      <h2>Built for firms that handle client information.</h2>
+      <p>Under POPIA, anyone who processes personal information for you needs a written agreement. We sign one before we touch anything.</p>
+    </div>
+    <div class="data">
+      <div><h3>Operator agreement first</h3><p>A written POPIA operator agreement is signed before access is given. It covers purpose, security, confidentiality and deletion.</p></div>
+      <div><h3>Least access, your accounts</h3><p>Workflows run on accounts you own where possible. We ask only for the access one task needs, and you can remove it any time.</p></div>
+      <div><h3>Drafts, logs, deletion</h3><p>Nothing posts or sends without a person approving it. Every run is logged. Test copies are deleted at handover.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Questions</div>
+      <h2>Straight answers.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>We already use Xero, Dext or Hubdoc. Why would we need you?</summary><p>Keep them. Xero's own AI now handles more inside Xero, like bank reconciliation. We automate the tasks between your tools that those apps do not cover, such as a client's spreadsheet, a booking system or a CRM feeding Xero.</p></details>
+      <details><summary>Do you have client case studies?</summary><p>Not yet. We are a young company and every video on this page is a demonstration build on test data. That is why the first five clients get a founding price, a 50% balance only due when it works, and a refund if it does not.</p></details>
+      <details><summary>Can you show it working before we pay?</summary><p>Yes. We show a live demo and review your task for free. The build itself is paid, with half due only once it works on your real file.</p></details>
+      <details><summary>What happens if a tool changes and the workflow breaks?</summary><p>You get 14 days of fixes after handover. After that, the optional care plan covers monitoring and repairs. Workflows are built to flag failures, not fail silently.</p></details>
+      <details><summary>Who owns the workflow?</summary><p>You do. Where possible it runs in your own accounts, and you receive a plain guide on how it works.</p></details>
+    </div>
   </div>
 </section>
 
@@ -395,7 +302,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> Prt Circle (Pty) Ltd · Johannesburg, South Africa</span>
-    <span><a href="mailto:support@prtcircle.com">support@prtcircle.com</a></span>
+    <span><a href="privacy.html">Privacy</a> · <a href="mailto:support@prtcircle.com">support@prtcircle.com</a></span>
   </div>
 </footer>
 

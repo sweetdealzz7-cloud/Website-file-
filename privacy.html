@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy | PRT CIRCLE</title>
+<meta name="description" content="PRT CIRCLE builds automation workflows for small businesses and accounting practices. Xero, HubSpot, Google Sheets, Airtable, Make and AI steps with human review. Based in Johannesburg.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prtcircle.com/">
+<meta property="og:title" content="PRT CIRCLE | Automation workflows, built and tested">
+<meta property="og:description" content="We build workflows that take repetitive work off your team. Xero, HubSpot, Sheets, Airtable and AI with human review. Johannesburg.">
+<meta property="og:image" content="https://prtcircle.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html#top"><img src="logo-mark.png" alt="PRT CIRCLE logo">PRT CIRCLE</a>
+    <div class="links">
+      <a href="xero.html">For Xero practices</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a class="btn btn-wa wa-link" href="index.html#" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+</nav>
+<section style="padding-top:60px">
+  <div class="wrap legal">
+    <div class="eyebrow">Privacy</div>
+    <h1 style="font-size:40px;margin:10px 0 20px">Privacy notice</h1>
+    <p>Prt Circle (Pty) Ltd ("PRT CIRCLE") respects your privacy and processes personal information in line with the Protection of Personal Information Act, 2013 (POPIA).</p>
+    <h2>This website</h2>
+    <p>This website has no forms and sets no tracking cookies of its own. Videos are played through YouTube's privacy-enhanced mode and only load when you press play. Fonts load from Google Fonts. Our hosting provider may keep standard server logs.</p>
+    <h2>When you contact us</h2>
+    <p>If you message us on WhatsApp or by email, we use your name, number, email and message only to reply and to quote for work. We do not sell or share it.</p>
+    <h2>Client work</h2>
+    <p>When we build workflows that touch your clients' personal information, we act as your operator under POPIA. We sign a written operator agreement before access, use only the access the task needs, and return or delete information when the work ends.</p>
+    <h2>Your rights</h2>
+    <p>You may ask what personal information we hold about you, and ask us to correct or delete it. Email <a href="mailto:admin@prtcircle.com">admin@prtcircle.com</a>. You may also lodge a complaint with the Information Regulator of South Africa.</p>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Prt Circle (Pty) Ltd · Johannesburg, South Africa</span>
+    <span><a href="privacy.html" aria-current="page">Privacy</a> · <a href="mailto:support@prtcircle.com">support@prtcircle.com</a></span>
+  </div>
+</footer>
+
+<a class="fab wa-link" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+  <span>Chat with us</span>
+</a>
+
+<script>
+(function(){
+  var msg = "Hi Ndumiso, I found PRT CIRCLE on your website. I have a task I'd like to automate: ";
+  var url = "https://wa.me/27615802434?text=" + encodeURIComponent(msg);
+  document.querySelectorAll(".wa-link").forEach(function(a){ a.href = url; });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  document.querySelectorAll(".yt").forEach(function(b){
+    var id = b.dataset.id;
+    b.style.backgroundImage = "url(https://i.ytimg.com/vi/" + id + "/hqdefault.jpg)";
+    b.addEventListener("click", function(){
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&playsinline=1";
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      f.title = b.getAttribute("aria-label") || "Video";
+      b.replaceWith(f);
+    });
+  });
+})();
+</script>
+</body>
+</html>
