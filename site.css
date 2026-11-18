@@ -159,3 +159,25 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 .legal h2{font-size:22px;margin:28px 0 8px}
 .legal p,.legal li{color:var(--ink2);font-size:15.5px;margin-bottom:10px}
 .legal ul{padding-left:20px}
+
+/* trust bar */
+.trustbar{background:var(--slate-d);color:#fff;font-size:14px}
+.trustbar .wrap{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:space-between;align-items:center;padding-top:9px;padding-bottom:9px}
+.trustbar .tl{display:flex;flex-wrap:wrap;gap:6px 18px}
+.trustbar a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.trustbar a:hover{color:#e9d7a8}
+@media(max-width:560px){.trustbar .wrap{justify-content:flex-start}}
+/* wide featured card */
+.card.wide{grid-column:1/-1;flex-direction:row}
+.card.wide .vid{flex:1.4;aspect-ratio:16/9;min-width:0}
+.card.wide .vid video{position:absolute;inset:0;width:100%;height:100%;background:#000}
+.card.wide .body{flex:1}
+@media(max-width:760px){.card.wide{flex-direction:column}}
+/* large demo player */
+.bigdemo{max-width:1040px;margin:0 auto}
+.bigdemo .vid{position:relative;aspect-ratio:16/9;background:#111}
+.bigdemo .vid iframe,.bigdemo .vid .yt{position:absolute;inset:0;width:100%;height:100%;border:0}
+.bigdemo .alt{padding:12px 22px;font-size:14px;color:var(--muted)}
+/* tighter hero so the demo shows sooner */
+.hero{padding:44px 0 36px}
+.intro{max-width:250px;margin-left:auto}
