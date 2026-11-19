@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gumroad sales into Airtable that cannot fail quietly | PRT CIRCLE</title>
+<meta name="description" content="Working demo: every Gumroad sale lands in Airtable once. Duplicates are blocked, bad data is logged with the reason, and a daily check compares Airtable to Gumroad itself.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prtcircle.com/gumroad-airtable.html">
+<meta property="og:title" content="Gumroad sales into Airtable that cannot fail quietly | PRT CIRCLE">
+<meta property="og:description" content="Duplicates blocked. Bad data logged. A daily check against Gumroad itself. Tested on synthetic data.">
+<meta property="og:image" content="https://prtcircle.com/og-image.png">
+<link rel="icon" href="logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.proof{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:14px}
+.proof th{background:#eef1f5;text-align:left;padding:11px 14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate-d)}
+.proof td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+.proof td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+.pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.pill.ok{background:#e5f4ea;color:#1c6b3c}
+.pill.log{background:#fbf1de;color:#8a5a12}
+.pill.fix{background:#e6edf8;color:#274a85}
+.tw{overflow-x:auto}
+.sum{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 28px}
+@media(max-width:760px){.sum{grid-template-columns:repeat(2,1fr)}}
+.sum div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.sum b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;line-height:1.1}
+.sum span{font-size:13px;color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:900px){.flow{grid-template-columns:1fr 1fr}}
+.flow div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;font-size:14px;color:var(--ink2)}
+.flow b{display:block;color:var(--ink);margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="logo-mark.png" alt="PRT CIRCLE logo">PRT CIRCLE</a>
+    <div class="links">
+      <a href="index.html#work">Work</a>
+      <a href="#tests">Test results</a>
+      <a href="#limits">What is not proven yet</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+</nav>
+<div class="trustbar">
+  <div class="wrap">
+    <span class="who"><b>Ndumiso Qwabe</b>, founder · Prt Circle (Pty) Ltd · Gauteng</span>
+    <span class="tl">
+      <a href="https://www.upwork.com/freelancers/~0178abc4130f40c3e9" target="_blank" rel="noopener">Upwork profile</a>
+      <a href="https://www.linkedin.com/in/n-qwabe-794632288" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="wa-link" href="#" target="_blank" rel="noopener">WhatsApp +27 61 580 2434</a>
+    </span>
+  </div>
+</div>
+
+<header class="hero" style="padding-bottom:20px">
+  <div class="wrap" style="grid-template-columns:1fr">
+    <div>
+      <div class="eyebrow">Working demo · Make + Airtable</div>
+      <h1>Gumroad sales into Airtable. Built so a missed sale cannot hide.</h1>
+      <p class="lead">Most sales workflows look fine on a green dashboard and still lose sales. This one assumes pings arrive twice, arrive broken, arrive late or never arrive. Every case is handled and tested.</p>
+      <div class="tools"><span>Duplicates blocked</span><span>Bad data logged with the reason</span><span>Refunds handled</span><span>Daily check against Gumroad</span></div>
+    </div>
+  </div>
+</header>
+
+<section style="padding-top:20px;padding-bottom:30px">
+  <div class="wrap">
+    <span class="honest"><b>Everything below ran on synthetic data.</b> The sale IDs start with GRDEMO and the emails are example.com. The "Gumroad list" in the daily check is a mock. It has not run on a live Gumroad account yet. See the last section.</span>
+    <div class="head">
+      <div class="eyebrow">How it works</div>
+      <h2>Five steps. Nothing is dropped without a record.</h2>
+    </div>
+    <div class="flow">
+      <div><b>1. Receive</b>Gumroad pings a private Make webhook for every sale.</div>
+      <div><b>2. Check</b>Sale ID, email and price are validated before anything is written.</div>
+      <div><b>3. Write once</b>One row per sale ID. A repeat ping updates the row. It never adds one.</div>
+      <div><b>4. Log failures</b>A bad ping goes to an error table with the exact reason.</div>
+      <div><b>5. Check daily</b>Airtable is compared with Gumroad. Gaps are filled and you get an alert.</div>
+    </div>
+  </div>
+</section>
+
+<section id="tests" style="padding-top:30px">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Test 1 · Live intake</div>
+      <h2>8 pings sent through the real webhook.</h2>
+      <p>Each ping was posted as a Gumroad-style form request. Results were then read back from Airtable.</p>
+    </div>
+    <div class="sum">
+      <div><b>8 of 8</b><span>runs finished without error</span></div>
+      <div><b>3</b><span>sale rows written</span></div>
+      <div><b>0</b><span>duplicate rows</span></div>
+      <div><b>2</b><span>bad pings logged with a reason</span></div>
+    </div>
+    <div class="tw">
+    <table class="proof">
+      <tr><th>#</th><th>What was sent</th><th>What happened</th><th></th></tr>
+      <tr><td>1</td><td>Valid sale GRDEMO-1001, $19.00</td><td>New row written. Ping count 1.</td><td><span class="pill ok">Stored</span></td></tr>
+      <tr><td>2</td><td>The same ping again (Gumroad can resend)</td><td>No new row. Ping count went to 2.</td><td><span class="pill ok">Blocked</span></td></tr>
+      <tr><td>3</td><td>Sale with no email</td><td>Not written to sales. Error log says "missing email".</td><td><span class="pill log">Logged</span></td></tr>
+      <tr><td>4</td><td>Price "abc" instead of cents</td><td>Not written to sales. Error log says "price is not a whole number of cents".</td><td><span class="pill log">Logged</span></td></tr>
+      <tr><td>5</td><td>Refund ping for GRDEMO-1001</td><td>Same row updated to refunded. No second row.</td><td><span class="pill ok">Updated</span></td></tr>
+      <tr><td>6</td><td>Valid sale GRDEMO-1004, $49.00</td><td>New row written.</td><td><span class="pill ok">Stored</span></td></tr>
+      <tr><td>7</td><td>$1 test purchase GRDEMO-1005</td><td>Row written and flagged Test sale = yes.</td><td><span class="pill ok">Flagged</span></td></tr>
+      <tr><td>8</td><td>Late resend of the original GRDEMO-1001 (says not refunded)</td><td>Row stays refunded. An old ping cannot undo a refund. Ping count 4.</td><td><span class="pill ok">Protected</span></td></tr>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Test 2 · Daily check</div>
+      <h2>The check that catches what pings miss.</h2>
+      <p>A ping can fail for reasons nobody sees. So once a day the workflow reads the sale list from Gumroad itself and compares it with Airtable. Here it ran against a mock list of 7 sales.</p>
+    </div>
+    <div class="tw">
+    <table class="proof">
+      <tr><th>Case</th><th>What the check did</th><th></th></tr>
+      <tr><td>2 sales whose pings were broken (1002, 1003)</td><td>Added from Gumroad's clean record. Marked RECOVERED.</td><td><span class="pill fix">Recovered</span></td></tr>
+      <tr><td>2 sales whose pings never arrived (1099, 1100)</td><td>Added and marked RECOVERED.</td><td><span class="pill fix">Recovered</span></td></tr>
+      <tr><td>1 sale refunded in Gumroad but still "paid" in Airtable (1004)</td><td>Status corrected to refunded.</td><td><span class="pill fix">Fixed</span></td></tr>
+      <tr><td>Sales already correct (1001, 1005)</td><td>Left alone.</td><td><span class="pill ok">No change</span></td></tr>
+      <tr><td>Run it a second time</td><td>Nothing added, nothing changed. Still 7 rows.</td><td><span class="pill ok">Safe to repeat</span></td></tr>
+    </table>
+    </div>
+    <p style="margin-top:14px;font-size:14px;color:var(--muted)">The check is built to email the owner a short list for each of: recovered sales, corrected refunds, and bad pings still open in the error log.</p>
+  </div>
+</section>
+
+<section id="limits" style="padding-top:30px">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Honest limits</div>
+      <h2>What is not proven yet.</h2>
+    </div>
+    <div class="split">
+      <div class="box">
+        <h3>Not done yet</h3>
+        <ul>
+          <li>It has not run on a live Gumroad account. I have not built on Gumroad before.</li>
+          <li>Gumroad's real ping field names must be confirmed with one real test ping from your account.</li>
+          <li>The daily check reads a mock list. On your account it reads Gumroad's own sales list.</li>
+        </ul>
+      </div>
+      <div class="box muted">
+        <h3>How we close those gaps</h3>
+        <ul>
+          <li>You make one $1 test sale. We watch it land in Airtable together.</li>
+          <li>You create your own access token in Gumroad. You never send me a password.</li>
+          <li>The workflow runs in your own Make and Airtable accounts, so you own it.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="contact">
+      <div class="eyebrow">Contact</div>
+      <h2 style="margin-top:10px">Want this on your Gumroad store?</h2>
+      <p>Send one line on what you sell and which fields you need in Airtable.</p>
+      <div class="ctas">
+        <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener">WhatsApp +27 61 580 2434</a>
+        <a class="btn btn-ghost" href="mailto:admin@prtcircle.com">admin@prtcircle.com</a>
+      </div>
+      <div class="small">Ndumiso Qwabe, founder · <a href="https://www.linkedin.com/in/n-qwabe-794632288" target="_blank" rel="noopener">LinkedIn</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Prt Circle (Pty) Ltd · Johannesburg, South Africa</span>
+    <span><a href="privacy.html">Privacy</a> · <a href="mailto:support@prtcircle.com">support@prtcircle.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var msg = "Hi Ndumiso, I saw your Gumroad to Airtable demo. What I need is: ";
+  var url = "https://wa.me/27615802434?text=" + encodeURIComponent(msg);
+  document.querySelectorAll(".wa-link").forEach(function(a){ a.href = url; });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
